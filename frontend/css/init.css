@@ -1,0 +1,119 @@
+
+/* TARJETA PRINCIPAL: OBJETIVO DE VENTAS */
+html, body {
+    background: transparent;
+}
+.sales-goal-card {
+    margin-bottom: 0px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.gauge-title {
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-title); 
+    color: var(--color-text-dark);
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+/* ESTRUCTURA DEL MEDIDOR (Gauge) - SIMPLIFICADO CON CSS */
+.gauge-container {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto;
+    position: relative;
+    padding-top: 100px; 
+}
+
+.gauge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    border-radius: 50% 50% 0 0;
+    overflow: hidden;
+    /* Colores del medidor - Usando los colores que infieren de la imagen */
+    background-image: linear-gradient(to right, 
+        red 0%, orange 20%, yellow 40%, #85E88E 60%, green 100%);
+    background-color: #ddd; 
+    /* Esta línea simula el corte del semicírculo, aunque para una implementación real 
+       se recomienda un SVG para mayor precisión y compatibilidad. */
+    clip-path: polygon(0 100%, 0 0, 100% 0, 100% 100%); 
+}
+
+.gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-left:200px;
+    margin-right:150px;
+    font-size: var(--font-size-body);
+    font-weight: 700;
+}
+
+/* Aguja del medidor */
+.gauge-needle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    height: 100px;
+    background-color: var(--color-text-dark);
+    transform-origin: bottom center;
+    /* Transform se define en JS para la posición inicial/animada */
+    transform: translateX(-50%) rotate(45deg); 
+    transition: transform 1s ease-in-out; 
+    z-index: 10;
+    /* Centro de la aguja */
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--color-text-dark);
+    }
+}
+
+
+/* ACCESOS RÁPIDOS */
+.quick-actions-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.quick-action-card {
+    flex: 1;
+    max-width: 350px;
+    background-color: var(--color-white);
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+    font-size: 3rem;
+    color: var(--color-secondary-purple-dark); /* Iconos en Morado (#A22ACD) */
+    margin-bottom: 15px;
+}
+
+.quick-action-card p {
+    font-size: var(--font-size-subtitle); /* 16px */
+    font-weight: 700;
+    color: var(--color-text-dark);
+}

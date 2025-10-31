@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper's - Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="../css/reset.css">   
+    <link rel="stylesheet" href="../css/main.css">    
+    <link rel="stylesheet" href="../css/products.css"> </head>
+<body>
+    
+<div class="products-container">
+  <div class="products-header">
+    <input type="text" class="product-search" placeholder="Ingrese el nombre del producto o servicio">
+    <button class="search-btn"><i class="fas fa-search"></i></button>
+
+    <div class="product-actions">
+      <button class="btn-primary"><i class="fas fa-plus"></i> Añadir</button>
+      <button class="btn-secondary"><i class="fas fa-file-export"></i> Exportar</button>
+      <button class="btn-secondary"><i class="fas fa-pen"></i> Editar</button>
+      <button class="btn-secondary"><i class="fas fa-trash"></i> Eliminar</button>
+    </div>
+  </div>
+
+  <div id="products-grid" class="products-grid">
+    <!-- Aquí se cargarán los productos desde el backend -->
+  </div>
+</div>
+
+<script src="../js/products.js"></script>
+  
+</body>
