@@ -1,0 +1,129 @@
+/* --- RESETEO Y BASE --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f5f8ff;
+  display: flex;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Hace que quede fijo en pantalla */
+  top: 0;
+  left: 0;
+  background-color: #f5f8ff;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 250px;
+  background-color: #d8e3f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.sidebar-logo {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sidebar-menu li:hover {
+  background-color: #c0d0f0;
+  border-radius: 8px;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background: none;
+  border: none;
+  color: #7a1f7a;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f8ff;
+  height: 100%;
+  overflow: hidden; /* Importante: evita scroll global dentro del main */
+}
+
+/* --- HEADER SUPERIOR --- */
+.header {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  width: 77vw;
+  height: 8vh;
+}
+
+.search-bar input {
+  padding: 6px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.help-btn {
+  background-color: #e8f0ff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* --- CONTENIDO DE CADA PÁGINA --- */
+.page-content {
+  flex-grow: 1;
+  padding: 2rem;
+  overflow-y: auto; /* Scroll solo dentro del contenido */
+  height: calc(100% - 60px); /* Resta el header */
+  box-sizing: border-box;
+}
