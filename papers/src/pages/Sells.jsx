@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "./SideBar.jsx";
 import Header from "./Header.jsx";
 import ClientInfo from "./ClientsInfo.jsx";
+import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
 import { fetchClientData } from "../hooks/clientsLogic.js";
+import {fetchSalesData} from "../hooks/salesData.js";
 import Layout from "./Layout.jsx";
 
 function Sells() {
   const [activeTab, setActiveTab] = useState("clientes");
   const [client, setClient] = useState(null);
+  const [sales, setSales] = useState(null);
 
   useEffect(() => {
     fetchClientData().then((data) => setClient(data));
+    fetchSalesData().then((data)=> setSales(data))
   }, []);
 
   return (
@@ -46,9 +50,14 @@ function Sells() {
           )}
 
           {activeTab === "documentos" && (
-            <div className="empty-section">
-              <p>Aquí aparecerán los documentos de ventas del cliente.</p>
-            </div>
+            <>
+              <h2 className="page-title">Filtro de busqueda</h2>
+              {sales ? (
+                <SalesInfo sales={sales} />
+              ) : (
+                <p className="loading">Cargando información de las venta...</p>
+              )}
+            </>
           )}
         </div>
       </Layout>

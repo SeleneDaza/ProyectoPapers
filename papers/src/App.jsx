@@ -22,8 +22,8 @@ import Sidebar from "./pages/SideBar";
 import Header from "./pages/Header";
 import HomePage from "./pages/Dashboard";
 import ClientesPage from "./pages/Sells.jsx";
-// import ComprasPage from "./pages/ComprasPage";
-// import ProductosPage from "./pages/ProductosPage";
+// import ComprasPge from "./pages/ComprasPage";
+import ProductsCatalog from "./pages/ProductsCatalog";
 // import UsuariosPage from "./pages/UsuariosPage";
 // import ReportesPage from "./pages/ReportesPage";
 import "./App.jsx";
@@ -42,9 +42,9 @@ function App() {
                   <Routes>
                     <Route path="/dashboard" element={<HomePage />} />
                     <Route path="/ventas" element={<ClientesPage />} />
-                    {/* <Route path="/compras" element={<ComprasPage />} />
-                    <Route path="/productos" element={<ProductosPage />} />
-                    <Route path="/usuarios" element={<UsuariosPage />} />
+                    {/* <Route path="/compras" element={<ComprasPage />} /> */}
+                    <Route path="/productos" element={<ProductsCatalog />} />
+                    {/* <Route path="/usuarios" element={<UsuariosPage />} />
                     <Route path="/reportes" element={<ReportesPage />} /> */}
                   </Routes>
                 </div>
