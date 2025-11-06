@@ -22,10 +22,10 @@ import Sidebar from "./pages/SideBar";
 import Header from "./pages/Header";
 import HomePage from "./pages/Dashboard";
 import ClientesPage from "./pages/Sells.jsx";
-// import ComprasPge from "./pages/ComprasPage";
+import ComprasPage from "./pages/Purchase.jsx";
 import ProductsCatalog from "./pages/ProductsCatalog";
 import UsuariosPage from "./pages/EmployeeProfile.jsx";
-// import ReportesPage from "./pages/ReportesPage";
+import ReportesPage from "./pages/Reports.jsx";
 import "./App.jsx";
 
 function App() {
@@ -42,10 +42,10 @@ function App() {
                   <Routes>
                     <Route path="/dashboard" element={<HomePage />} />
                     <Route path="/ventas" element={<ClientesPage />} />
-                    {/* <Route path="/compras" element={<ComprasPage />} /> */}
+                    <Route path="/compras" element={<ComprasPage />} />
                     <Route path="/productos" element={<ProductsCatalog />} />
                     <Route path="/usuarios" element={<UsuariosPage />} />
-                    {/* <Route path="/reportes" element={<ReportesPage />} /> */}
+                    <Route path="/reportes" element={<ReportesPage />} />
                   </Routes>
                 </div>
           }

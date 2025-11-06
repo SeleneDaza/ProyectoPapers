@@ -1,13 +1,10 @@
-// hooks/employeeLogic.js
+// employeeData.js
 
-// **Nota:** En una aplicación real, estos datos se importarían del archivo employeeData.js
-// o se definirían aquí si esta fuera la única fuente.
-
-const employeeProfileData = {
+export const employeeProfileData = {
   // Datos del Encabezado
   name: "Juan Carlos Gómez Ayala",
-  active: true,
-  role: "Empleado",
+  active: true, // Estado del interruptor (toggle)
+  role: "Empleado", // El rol marcado en el checkbox (simulado)
   
   // Datos de la sección "Datos básicos"
   basic: {
@@ -32,19 +29,4 @@ const employeeProfileData = {
   isClient: false,
   isProvider: false,
   isEmployee: true,
-};
-
-/**
- * Simula la obtención de los datos del perfil de un empleado desde el backend.
- * @returns {Promise<Object>} Promesa que resuelve con los datos del perfil.
- */
-export const fetchEmployeeData = () => {
-  console.log("Simulando fetch de datos del empleado...");
-  return new Promise(resolve => {
-    // Simula un retraso de red de 700ms
-    setTimeout(() => {
-      resolve(employeeProfileData); 
-      console.log("Datos del empleado cargados.");
-    }, 700);
-  });
 };
