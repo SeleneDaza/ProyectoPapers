@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/Dashboard.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/simplelogo.png";
 
 function Sidebar() {
   const navigate = useNavigate();

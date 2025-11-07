@@ -10,11 +10,12 @@ function Header() {
       </div>
 
       <div className="header-right">
+                <button className="help-btn"><FaQuestionCircle /> Ayuda</button>
         <FaBell className="header-icon" />
         <FaCog className="header-icon" />
-        <button className="help-btn"><FaQuestionCircle /> Ayuda</button>
         <div className="user-info">
-          <FaUser /> Adriana Fonseca
+          <FaUser className="header-icon" /> 
+
         </div>
       </div>
     </header>
