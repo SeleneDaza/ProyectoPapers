@@ -8,7 +8,7 @@ import { fetchClientData } from "../hooks/clientsLogic.js";
 import {fetchSalesData} from "../hooks/salesData.js";
 import Layout from "./Layout.jsx";
 
-function Sells() {
+function Sales() {
   const [activeTab, setActiveTab] = useState("clientes");
   const [client, setClient] = useState(null);
   const [sales, setSales] = useState(null);
@@ -64,4 +64,4 @@ function Sells() {
   );
 }
 
-export default Sells;
+export default Sales;

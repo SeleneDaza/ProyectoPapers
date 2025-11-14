@@ -21,7 +21,7 @@ import LoginPage from "./pages/LoginPage";
 import Sidebar from "./pages/SideBar";
 import Header from "./pages/Header";
 import HomePage from "./pages/Dashboard";
-import ClientesPage from "./pages/Sells.jsx";
+import ClientesPage from "./pages/Sales.jsx";
 import ComprasPage from "./pages/Purchase.jsx";
 import ProductsCatalog from "./pages/ProductsCatalog";
 import UsuariosPage from "./pages/EmployeeProfile.jsx";
