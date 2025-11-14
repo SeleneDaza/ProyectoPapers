@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/Dashboard.css";
 import logo from "../assets/simplelogo.png";
+import PopUp from "./PopUp";
 
 function Sidebar() {
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <div className="sidebar">
@@ -15,7 +17,7 @@ function Sidebar() {
           <i className="fas fa-home"></i> Inicio
         </li>
         <li onClick={() => navigate("/ventas")}>
-          <i className="fas fa-dollar-sign"></i> Ventas
+          <i className="fr-signas fa-dolla"></i> Ventas
         </li>
         <li onClick={() => navigate("/compras")}>
           <i className="fas fa-shopping-cart"></i> Compras
@@ -31,9 +33,24 @@ function Sidebar() {
         </li>
       </ul>
 
-      <button className="logout-btn" onClick={() => navigate("/")}>
+      <button
+        className="logout-btn"
+        onClick={() => setShowPopup(true)}
+      >
         <i className="fas fa-arrow-left"></i> Cerrar sesión
       </button>
+
+      {/* POPUP DE CONFIRMACIÓN */}
+      <PopUp
+        show={showPopup}
+        title="Advertencia"
+        message="¿Seguro que deseas cerrar sesión?"
+        onCancel={() => setShowPopup(false)}
+        onConfirm={() => {
+          setShowPopup(false);
+          navigate("/");
+        }}
+      />
     </div>
   );
 }
