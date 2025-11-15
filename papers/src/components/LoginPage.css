@@ -55,7 +55,7 @@
 }
 
 input {
-  width: 100%;
+  width: 94%;
   padding: 12px 10px;
   margin-bottom: 20px;
   border: 1.5px solid #bbb;
@@ -64,6 +64,9 @@ input {
   transition: 0.2s;
 }
 
+.error-message{
+  color:red;
+}
 input:focus {
   outline: none;
   border-color: #1e8b3b;
