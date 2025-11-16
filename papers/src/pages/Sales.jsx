@@ -4,13 +4,13 @@ import Header from "./Header.jsx";
 import ClientInfo from "./ClientsInfo.jsx";
 import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
-import { useListUsers } from "../hooks/useListTerceros.js";
+import { useListUsers } from "../hooks/useListUsers.js";
 import {fetchSalesData} from "../hooks/salesData.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
   const [activeTab, setActiveTab] = useState("clientes");
-  const { users: clients, loading, error } = useListUsers();
+  const { users: clients, loading, error } = useListUsers("CLIENTE");
   const [sales, setSales] = useState(null);
 
   return (
