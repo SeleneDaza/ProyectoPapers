@@ -4,13 +4,12 @@ import React from 'react';
 import { FaSearch, FaPlus, FaFileExport, FaEdit, FaTrash } from 'react-icons/fa'; 
 
 import ProductCard from './ProductCard';
-import { productsData } from '../hooks/productsData'; // Importamos la data
+import { useProducts } from '../hooks/useProducts'; // Importamos la data
 import '../components/ProductsCatalog.css';
 import Layout from './Layout';
 
 function ProductCatalog() {
-  // En una aplicación real, usarías useState y un filtro para 'products'
-  const products = productsData; // Usamos la data importada directamente
+  const { products, loading } = useProducts();
 
   return (
     <Layout>
