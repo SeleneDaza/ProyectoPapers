@@ -4,19 +4,14 @@ import Header from "./Header.jsx";
 import ClientInfo from "./ClientsInfo.jsx";
 import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
-import { fetchClientData } from "../hooks/clientsLogic.js";
+import { useListUsers } from "../hooks/useListTerceros.js";
 import {fetchSalesData} from "../hooks/salesData.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
   const [activeTab, setActiveTab] = useState("clientes");
-  const [client, setClient] = useState(null);
+  const { users: clients, loading, error } = useListUsers();
   const [sales, setSales] = useState(null);
-
-  useEffect(() => {
-    fetchClientData().then((data) => setClient(data));
-    fetchSalesData().then((data)=> setSales(data))
-  }, []);
 
   return (
       <Layout>

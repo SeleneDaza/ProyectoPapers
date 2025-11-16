@@ -17,8 +17,8 @@ export function useListUsers() {
     try {
       const response = await axios.get(API_URL);
 
-      const clientes = response.data.filter(t => t.roles.includes('CLIENTE'));
-      setUsers(clientes);
+      const clients = response.data.filter(t => t.roles.includes('CLIENTE'));
+      setUsers(clients);
 
     } catch (err) {
       console.error("Error al cargar los usuarios:", err);
