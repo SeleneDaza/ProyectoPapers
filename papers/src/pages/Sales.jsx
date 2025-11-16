@@ -11,8 +11,6 @@ import { flattenSalesData } from "../hooks/salesUtils.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
-
-  //REVISAR ESTO, SE SUPONE ES PARA EL FILTRO DE BUSQUEDA PERO DEPENDE DEL BACKEND
   const [activeTab, setActiveTab] = useState("clientes");
   const { users: clients, loading, error } = useListUsers("CLIENTE");
   const { sales, loading: salesLoading, error: salesError } = useListSales();
@@ -84,58 +82,7 @@ function Sales() {
             </>
           )}
         </div>
-        {activeTab === "clientes" && (
-          <>
-            <div className="client-header-bar">
-             {/* BUSCADOR EXTENDIBLE */}
-             <div className="client-name">Nombre del cliente</div>
-              <input
-                className="autocomplete-input"
-                type="text"
-                placeholder="Buscar cliente..."
-                value={clientSearch}
-                onChange={(e) => setClientSearch(e.target.value)}
-              />
-
-
-            <div className="actions-section">
-                <button className="action-btn">Añadir</button>
-                <button className="action-btn">Exportar</button>
-                <button className="action-btn">Editar</button>
-                <button className="action-btn">Eliminar</button>
-              </div>
-            </div>
-
-            <h2 className="page-title">Información del cliente</h2>
-
-            {loading && (
-              <p className="loading">Cargando información del cliente...</p>
-            )}
-
-            {error && <p className="loading">Error al cargar clientes.</p>}
-
-            {!loading && !error && clients && clients.length > 0 && (
-              <ClientInfo client={clients[0]} />
-            )}
-
-            {!loading && !error && clients && clients.length === 0 && (
-              <p>No se encontraron clientes.</p>
-            )}
-          </>
-        )}
-
-        {activeTab === "documentos" && (
-          <>
-            <h2 className="page-title">Filtro de búsqueda</h2>
-
-            {sales ? (
-              <SalesInfo sales={sales} />
-            ) : (
-              <p className="loading">Cargando información de las ventas...</p>
-            )}
-          </>
-        )}
-    </Layout>
+      </Layout>
   );
 }
 
