@@ -1,0 +1,193 @@
+/* EmployeeProfile.css */
+
+/* --- Colores Base --- */
+:root {
+    --primary-blue: #4c86f7;
+    --primary-green: #2e8b57;
+    --light-bg: #f5f7fa;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--light-bg);
+    font-family: Arial, sans-serif;
+}
+
+/* --- 1. Encabezado y Barra de Acciones --- */
+.profile-header-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.employee-name-title {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+.employee-selector {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--primary-blue);
+    appearance: none; /* Quita el estilo nativo */
+    background-color: white;
+}
+
+.action-buttons-group {
+    display: flex;
+    margin-left: auto; /* Empuja el grupo a la derecha */
+    gap: 8px;
+}
+
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: white;
+    font-weight: 500;
+    color: #333;
+}
+.toolbar-btn.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+.toolbar-btn.delete-btn {
+    color: #d9534f; /* Rojo */
+}
+
+/* --- 2. Pestañas de Navegación --- */
+.tabs-container-profile {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-profile {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #666;
+    font-weight: 500;
+}
+
+.tab-profile.active {
+    color: var(--primary-blue);
+    border-bottom: 3px solid var(--primary-blue);
+    margin-bottom: -2px;
+}
+
+/* --- 3. Contenido del Perfil (Grid) --- */
+.profile-content-grid {
+    display: grid;
+    /* Define la estructura principal de la imagen:
+       Fila 1: Avatar / Fila 2: Rol / Fila 3: Facturación
+       Columna 1 (izquierda) y Columna 2 (derecha)
+    */
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto 1fr; 
+    gap: 20px;
+}
+
+/* Área principal (avatar y nombre) */
+.profile-main-info {
+    grid-column: 1 / 3; /* Ocupa ambas columnas */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+.profile-avatar-large {
+    font-size: 60px;
+    color: #ccc;
+    margin-right: 20px;
+}
+.profile-name {
+    margin: 0;
+    font-size: 1.8rem;
+}
+.profile-status-toggle {
+    display: block;
+    font-weight: bold;
+    color: green;
+}
+.profile-status-toggle.inactive {
+    color: gray;
+}
+.profile-status-toggle input[type="checkbox"] {
+    margin-left: 10px;
+    /* Estilos para el interruptor (toggle) */
+}
+
+/* Cajas de Rol, Facturación, Datos Básicos */
+.profile-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+.profile-box h4 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+}
+
+/* Posicionamiento de las cajas */
+.role-box {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.billing-data-box {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+.basic-data-box {
+    grid-column: 2 / 3;
+    grid-row: 2 / 4; /* Ocupa las filas restantes en la columna derecha */
+}
+
+/* Estilos de los campos de datos dentro de las cajas */
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.data-row p {
+    margin: 0;
+    font-weight: 500;
+    color: #555;
+    white-space: nowrap;
+}
+.data-row input, .data-input-select {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 60%;
+    background-color: #f9f9f9;
+}
+.data-row.required p:before {
+    content: '* ';
+    color: red;
+}
+
+/* Estilo específico para los datos básicos (columnas de Nombres/Apellidos/etc.) */
+.data-column-split {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.data-column {
+    flex: 1;
+}

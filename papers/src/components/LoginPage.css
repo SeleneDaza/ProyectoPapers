@@ -1,0 +1,121 @@
+/* Contenedor general: divide la pantalla en 2 */
+.login-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ---------------- LADO IZQUIERDO ---------------- */
+.left-side {
+  flex: 1.1;
+  background-color: #f5f5f5;
+}
+
+.storefront-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------- LADO DERECHO ---------------- */
+.right-side {
+  flex: 0.9;
+  background-color: #eaf2fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Caja del formulario */
+.login-box {
+  background-color: white;
+  padding: 40px 45px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 25px auto;
+  width: 160px;
+}
+
+/* Etiquetas y campos */
+.field-label {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 94%;
+  padding: 12px 10px;
+  margin-bottom: 20px;
+  border: 1.5px solid #bbb;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.error-message{
+  color:red;
+}
+input:focus {
+  outline: none;
+  border-color: #1e8b3b;
+  box-shadow: 0 0 5px rgba(30, 139, 59, 0.3);
+}
+
+/* Botón de ingresar */
+button {
+  width: 100%;
+  background-color: #1e8b3b;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #17702f;
+}
+
+/* Enlace de recuperación */
+.forgot-password {
+  text-align: center;
+  margin-top: 18px;
+  color: #004080;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Responsividad: vista móvil */
+@media (max-width: 950px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .left-side {
+    height: 40vh;
+  }
+
+  .right-side {
+    height: 60vh;
+  }
+}

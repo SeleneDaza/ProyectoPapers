@@ -1,0 +1,60 @@
+.client-container {
+  background: #f2f5fb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.client-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.client-avatar {
+  font-size: 60px;
+  color: #8c8c8c;
+}
+
+.client-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.client-status {
+  font-weight: 600;
+}
+
+.client-status.active {
+  color: green;
+}
+
+.client-status.inactive {
+  color: red;
+}
+
+.client-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.client-box {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.client-box h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.client-box p {
+  margin: 5px 0;
+  font-size: 14px;
+}
