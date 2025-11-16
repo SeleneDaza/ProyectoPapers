@@ -1,11 +1,6 @@
-/* Estilos necesarios para la vista de la imagen (deben estar en un archivo CSS importado) */
-
-.sales-info-view {
-    /* Contenedor principal para aplicar padding/margen si es necesario */
+.sales-info-view {   
     padding: 20px;
 }
-
-/* --- Título y Filtro de Búsqueda --- */
 .search-filter-container {
     background-color: #fff;
     padding: 20px;

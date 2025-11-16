@@ -1,6 +1,3 @@
-/* ProductCatalog.css */
-
-/* ... Estilos base (body, .product-catalog-view) se mantienen ... */
 body {
     background-color: #f5f7fa; 
     font-family: Arial, sans-serif;
@@ -11,16 +8,14 @@ body {
     padding: 20px;
 }
 
-/* --- 1. Estilos del Layout Superior (Una Sola Fila) --- */
 .toolbar-container-inline {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre la barra de búsqueda y el grupo de botones */
+    gap: 15px; 
     margin-bottom: 25px;
-    padding: 15px 0; /* Padding interno solo si se necesita */
+    padding: 15px 0; 
 }
 
-/* --- A. Barra de Búsqueda Compacta y Flex Grow --- */
 .search-input-group-inline {
     display: flex;
     align-items: center;
@@ -28,9 +23,9 @@ body {
     background-color: white;
     border-radius: 4px;
     padding: 8px 12px;
-    flex-grow: 1; /* Ocupa el máximo espacio posible */
+    flex-grow: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    max-width: 600px; /* Limita el tamaño de la barra de búsqueda */
+    max-width: 600px;
 }
 
 .search-input-compact {
@@ -45,14 +40,12 @@ body {
     color: #666;
     margin-left: 10px;
     font-size: 1.1rem;
-    order: -1; /* Coloca el icono a la izquierda dentro del input-group si la imagen lo requiere */
+    order: -1;
 }
 
-/* --- B. Botones de Acción en Línea (Pequeños y Blancos) --- */
 .action-buttons-group-inline {
     display: flex;
     gap: 8px;
-    /* Asegura que el grupo no se encoja */
     flex-shrink: 0; 
 }
 
@@ -61,23 +54,20 @@ body {
     align-items: center;
     gap: 5px;
     padding: 8px 12px;
-    border: 1px solid #a6c0e8; /* Borde azul muy claro */
+    border: 1px solid #a6c0e8; 
     border-radius: 4px;
     cursor: pointer;
     background-color: white;
     font-weight: 500;
-    color: #4c86f7; /* Texto azul para los botones */
+    color: #4c86f7; 
     font-size: 0.9rem;
 }
 
 .toolbar-btn.inline-btn:hover {
-    background-color: #f0f4ff; /* Fondo azul claro al pasar el ratón */
+    background-color: #f0f4ff; 
     border-color: #4c86f7;
 }
 
-
-/* --- 2. Estilos del Grid de Productos --- */
-/* (Se mantienen iguales) */
 .products-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
@@ -85,8 +75,6 @@ body {
     padding: 10px 0;
 }
 
-/* --- Estilos de la Tarjeta Individual (ProductCard) --- */
-/* (Se mantienen iguales) */
 .product-card {
     background-color: white;
     border: 1px solid #eee;

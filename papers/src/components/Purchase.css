@@ -1,13 +1,6 @@
-
-/*
-  ======================================================
-  3. ESTILOS DE LA BARRA DE ENCABEZADO DE CLIENTES (Compacta y Centrada)
-  ======================================================
-*/
-
 .client-header-bar {
   display: flex;
-  align-items: center; /* CLAVE para el CENTRADO VERTICAL */
+  align-items: center; 
   gap: 15px;
   padding: 15px 0;
   border-bottom: 1px solid #e0e0e0;
@@ -20,38 +13,33 @@
   color: #163869;
   margin: 0;
   flex-shrink: 0;
-  /* Asegura que el texto esté centrado si el contenedor tiene padding implícito */
   line-height: 1.2; 
 }
 
-/* Dropdown/Campo de Selección */
 .autocomplete-container {
   display: flex;
   align-items: center;
   flex-grow: 0;
-  /* El contenedor no necesita ningún padding extra que rompa el centrado vertical */
 }
 
 .autocomplete-input {
-  /* Contenedor o wrapper del componente Dropdown/Select */
   display: flex;
   align-items: center;
   border: 1px solid #cfd6e3;
   border-radius: 4px;
-  padding: 8px 12px; /* Mismo padding para asegurar alineación con los botones */
+  padding: 8px 12px; 
   font-size: 14px;
   min-width: 200px;
-  background-color: white; /* Asegura fondo blanco */
+  background-color: white; 
   cursor: pointer;
 }
 
-/* Botones de Acción */
 .actions-section {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   gap: 8px;
-  margin-left: auto; /* Empuja los botones a la derecha */
+  margin-left: auto;
   margin-bottom: 0.8%;
 }
 
@@ -59,16 +47,10 @@
   margin: 2%;
 }
 
-/*
-  ======================================================
-  4. ESTILOS DE BOTONES DE ACCIÓN (action-btn - Colores corregidos)
-  ======================================================
-*/
 .action-btn {
-  /* Estilo base (Exportar, Editar, Eliminar) - Borde y texto azul claro */
   background-color: #ffffff;
-  border: 1px solid #b3c5e8; /* Borde azul claro */
-  color: #2f5ee0; /* Texto azul de énfasis */
+  border: 1px solid #b3c5e8;
+  color: #2f5ee0; 
   border-radius: 5px;
   padding: 8px 12px;
   font-size: 14px;
@@ -80,18 +62,16 @@
   gap: 5px;
 }
 
-/* Botón "Añadir" (Fondo azul sólido) */
 .action-btn.primary {
-  background-color: #2f5ee0; /* Azul fuerte como en la imagen */
+  background-color: #2f5ee0; 
   color: white;
   border-color: #2f5ee0;
 }
 
-/* Estilo para Eliminar (Borde gris claro como en la imagen) */
 .action-btn.danger {
   background-color: #ffffff;
   border: 1px solid #cfd6e3;
-  color: #4a4a4a; /* Texto gris neutro */
+  color: #4a4a4a; 
 }
 
 .action-btn:hover {
@@ -99,7 +79,7 @@
 }
 
 .action-btn.primary:hover {
-  background-color: #163869; /* Un azul más oscuro al hacer hover */
+  background-color: #163869; 
   border-color: #163869;
 }
 

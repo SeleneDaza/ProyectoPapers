@@ -1,22 +1,19 @@
-/* ReportsView.css */
-
 :root {
-    --bg-light-blue: #f0f6ff; /* Fondo general de la sección de reportes */
-    --text-blue: #4c86f7; /* Color principal de los enlaces y encabezados */
-    --border-color: #e0e7f7; /* Borde suave */
-    --sidebar-bg: #e0e6f7; /* Fondo de la barra lateral (ligeramente más oscuro) */
+    --bg-light-blue: #f0f6ff; 
+    --text-blue: #4c86f7; 
+    --border-color: #e0e7f7; 
+    --sidebar-bg: #e0e6f7; 
     --hover-bg: #cce0ff;
 }
 
 .reports-page-layout {
     display: flex;
-    min-height: calc(100vh - 80px); /* Ajusta a la altura de la vista si es necesario */
+    min-height: calc(100vh - 80px); 
     background-color: var(--bg-light-blue);
     border-radius: 8px;
-    overflow: hidden; /* Para que las esquinas se vean bien */
+    overflow: hidden; 
 }
 
-/* --- Columna Izquierda: Navegación de Reportes --- */
 .reports-sidebar {
     width: 300px;
     background-color: var(--sidebar-bg);
@@ -58,7 +55,6 @@
     font-size: 0.8rem;
 }
 
-/* --- Secciones detalladas (si decides mostrarlas debajo) --- */
 .report-sections-detail {
     padding: 10px 20px;
     border-top: 1px solid var(--border-color);
@@ -82,15 +78,12 @@
     font-weight: bold;
     color: var(--text-blue);
 }
-
-
-/* --- Columna Derecha: Visualizador de Reporte --- */
 .report-visualizer {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: white; /* El área de visualización es blanca */
+    background-color: white; 
 }
 
 .report-viewer-content {
@@ -105,7 +98,7 @@
 
 .initial-message {
     font-size: 1.2rem;
-    color: #a0b3d6; /* Gris azulado suave */
+    color: #a0b3d6; 
 }
 
 .report-title-preview {
@@ -113,10 +106,9 @@
     font-size: 1.5rem;
 }
 
-/* --- Controles de Paginas/PDF --- */
 .pagination-and-export {
     display: flex;
-    justify-content: flex-end; /* Alinea los controles a la derecha */
+    justify-content: flex-end; 
     align-items: center;
     gap: 0px;
     padding: 5px 0;
