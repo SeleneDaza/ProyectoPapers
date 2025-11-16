@@ -13,6 +13,10 @@ function Sales() {
   const { users: clients, loading, error } = useListUsers("CLIENTE");
   const [sales, setSales] = useState(null);
 
+  useEffect(() => {
+    fetchSalesData().then((data)=> setSales(data))
+  }, []);
+
   return (
       <Layout>
         <div className="content">
@@ -36,10 +40,27 @@ function Sales() {
           {activeTab === "clientes" && (
             <>
               <h2 className="page-title">Información del cliente</h2>
-              {client ? (
-                <ClientInfo client={client} />
-              ) : (
+              
+              {/* Muestra "Cargando..." mientras el hook trabaja */}
+              {loading && (
                 <p className="loading">Cargando información del cliente...</p>
+              )}
+              
+              {/* Muestra un error si el hook falla */}
+              {error && (
+                <p className="loading">Error al cargar clientes.</p>
+              )}
+              
+              {/* Si NO está cargando, NO hay error, y SÍ hay clientes... */}
+              {!loading && !error && clients && clients.length > 0 && (
+                // ...muestra el PRIMER cliente de la lista
+                // (Ahora usamos 'clients' (plural) que SÍ existe)
+                <ClientInfo client={clients[0]} />
+              )}
+
+              {/* Si no hay clientes (lista vacía) */}
+               {!loading && !error && clients && clients.length === 0 && (
+                <p>No se encontraron clientes.</p>
               )}
             </>
           )}
