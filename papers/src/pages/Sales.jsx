@@ -6,15 +6,18 @@ import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
 import { useListUsers } from "../hooks/useListUsers.js";
 import {fetchSalesData} from "../hooks/salesData.js";
+import { useListSales } from "../hooks/useListSales.js";
+import { flattenSalesData } from "../hooks/salesUtils.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
   const [activeTab, setActiveTab] = useState("clientes");
   const { users: clients, loading, error } = useListUsers("CLIENTE");
-  const [sales, setSales] = useState(null);
+  const { sales, loading: salesLoading, error: salesError } = useListSales();
+
+  const flattenedSales = sales.length > 0 ? flattenSalesData(sales) : [];
 
   useEffect(() => {
-    fetchSalesData().then((data)=> setSales(data))
   }, []);
 
   return (
@@ -68,10 +71,13 @@ function Sales() {
           {activeTab === "documentos" && (
             <>
               <h2 className="page-title">Filtro de busqueda</h2>
-              {sales ? (
-                <SalesInfo sales={sales} />
+              {/* --- CAMBIO: Usamos las nuevas variables --- */}
+              {salesLoading ? (
+                <p className="loading">Cargando información de las ventas...</p>
+              ) : salesError ? (
+                <p className="loading">Error al cargar la información de ventas.</p>
               ) : (
-                <p className="loading">Cargando información de las venta...</p>
+                <SalesInfo sales={flattenedSales} /> 
               )}
             </>
           )}
