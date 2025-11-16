@@ -1,0 +1,85 @@
+/* 1. Contenedor Principal (Header) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 15px 20px 15px 0;
+}
+
+/* 2. Barra de Búsqueda */
+.search-bar {
+  flex-grow: 1; 
+  max-width: 400px; 
+  margin-right: 20px;
+}
+
+.search-bar input {
+    margin-top: 4%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%; 
+}
+
+/* 3. Contenedor de Botones (Derecha) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 🔥 REDUCIDO: Espacio más pequeño entre los botones (de 10px a 5px) 🔥 */
+}
+
+/* 4. Botón de Ayuda (Principal Verde) */
+.help-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px; 
+  background-color: #198754;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  gap: 5px;
+}
+
+/* 5. Estilo de los Botones Pequeños y Grises (Campana y Configuración) */
+.extra-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* 🔥 REDUCIDO: Tamaño más pequeño (de 35px a 30px) 🔥 */
+  height: 40px; /* 🔥 REDUCIDO: Tamaño más pequeño (de 35px a 30px) 🔥 */
+  border-radius: 50%;
+  border: none;
+  background-color: transparent; 
+  color: #6c757d; 
+  cursor: pointer;
+  font-size: 16px; /* 🔥 REDUCIDO: Tamaño del ícono más pequeño (de 18px a 16px) 🔥 */
+}
+
+/* 6. Botón de Perfil (Un poco más grande y con fondo gris claro) */
+.perfil-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Ligeramente más grande que los extra-button */
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: #aac0d6; 
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.perfil-button .header-icon {
+    color: #495057;
+}
+
+.perfil-button .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
