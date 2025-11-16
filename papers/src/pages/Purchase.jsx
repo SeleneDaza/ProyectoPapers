@@ -16,6 +16,9 @@ function Purchase() {
     fetchPurchaseData().then((data)=> setpurchase(data))
   }, []);
 
+  //REVISAR ESTO, SE SUPONE ES PARA EL FILTRO DE BUSQUEDA PERO DEPENDE DEL BACKEND
+  const [clientSearch, setClientSearch] = useState("");
+
   return (
       <Layout>
         <div className="content">
@@ -38,6 +41,26 @@ function Purchase() {
 
           {activeTab === "Proovedor" && (
             <>
+            <div className="client-header-bar">
+             {/* BUSCADOR EXTENDIBLE */}
+             <div className="client-name">Nombre del proveedor</div>
+              <input
+                className="autocomplete-input"
+                type="text"
+                placeholder="Buscar proveedor..."
+                value={clientSearch}
+                onChange={(e) => setClientSearch(e.target.value)}
+              />
+
+
+            <div className="actions-section">
+                <button className="action-btn">Añadir</button>
+                <button className="action-btn">Exportar</button>
+                <button className="action-btn">Editar</button>
+                <button className="action-btn">Eliminar</button>
+              </div>
+            </div>
+
               <h2 className="page-title">Información del Proovedor</h2>
               {supplier ? (
                 <SupplierInfo supplier={supplier} />
