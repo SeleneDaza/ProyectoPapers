@@ -1,0 +1,60 @@
+.supplier-container {
+  background: #f2f5fb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.supplier-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.supplier-avatar {
+  font-size: 60px;
+  color: #8c8c8c;
+}
+
+.supplier-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.supplier-status {
+  font-weight: 600;
+}
+
+.supplier-status.active {
+  color: green;
+}
+
+.supplier-status.inactive {
+  color: red;
+}
+
+.supplier-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.supplier-box {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.supplier-box h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.supplier-box p {
+  margin: 5px 0;
+  font-size: 14px;
+}
