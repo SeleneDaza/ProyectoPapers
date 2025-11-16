@@ -5,13 +5,9 @@ import ClientInfo from "./ClientsInfo.jsx";
 import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
 import { useListUsers } from "../hooks/useListUsers.js";
-<<<<<<< HEAD
 import {fetchSalesData} from "../hooks/salesData.js";
 import { useListSales } from "../hooks/useListSales.js";
 import { flattenSalesData } from "../hooks/salesUtils.js";
-=======
-import { fetchSalesData } from "../hooks/salesData.js";
->>>>>>> ea09611ed5968e0b3a4eb48726523c8030cb8283
 import Layout from "./Layout.jsx";
 
 function Sales() {
@@ -19,7 +15,6 @@ function Sales() {
   //REVISAR ESTO, SE SUPONE ES PARA EL FILTRO DE BUSQUEDA PERO DEPENDE DEL BACKEND
   const [activeTab, setActiveTab] = useState("clientes");
   const { users: clients, loading, error } = useListUsers("CLIENTE");
-<<<<<<< HEAD
   const { sales, loading: salesLoading, error: salesError } = useListSales();
 
   const flattenedSales = sales.length > 0 ? flattenSalesData(sales) : [];
@@ -88,32 +83,6 @@ function Sales() {
               )}
             </>
           )}
-=======
-  const [sales, setSales] = useState(null);
-  const [clientSearch, setClientSearch] = useState("");
-
-
-  useEffect(() => {
-    fetchSalesData().then((data) => setSales(data));
-  }, []);
-
-  return (
-    <Layout>
-      <div className="content">
-        <div className="tabs">
-          <button
-            className={`tab-btn ${activeTab === "clientes" ? "active" : ""}`}
-            onClick={() => setActiveTab("clientes")}
-          >
-            Clientes
-          </button>
-          <button
-            className={`tab-btn ${activeTab === "documentos" ? "active" : ""}`}
-            onClick={() => setActiveTab("documentos")}
-          >
-            Documentos de ventas
-          </button>
->>>>>>> ea09611ed5968e0b3a4eb48726523c8030cb8283
         </div>
         {activeTab === "clientes" && (
           <>
@@ -166,7 +135,6 @@ function Sales() {
             )}
           </>
         )}
-      </div>
     </Layout>
   );
 }
