@@ -1,3 +1,88 @@
+.client-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 25px;
+}
+
+.client-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #163869;
+  margin: 0;
+  flex-shrink: 0;
+  line-height: 1.2; 
+}
+
+.autocomplete-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.autocomplete-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cfd6e3;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  min-width: 200px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.actions-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-left: auto; 
+  margin-bottom: 0.8%;
+}
+
+.autocomplete-input{
+  margin: 2%;
+}
+
+.action-btn {
+  background-color: #ffffff;
+  border: 1px solid #b3c5e8; 
+  color: #2f5ee0; 
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.action-btn.primary {
+  background-color: #2f5ee0; 
+  color: white;
+  border-color: #2f5ee0;
+}
+
+.action-btn.danger {
+  background-color: #ffffff;
+  border: 1px solid #cfd6e3;
+  color: #4a4a4a; 
+}
+
+.action-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.action-btn.primary:hover {
+  background-color: #163869; 
+  border-color: #163869;
+}
+
 .content {
   padding: 20px;
   background-color: #f7f9fc;
