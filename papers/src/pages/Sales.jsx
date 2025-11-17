@@ -7,7 +7,7 @@ import "../components/Clients.css";
 import { useListUsers } from "../hooks/useListUsers.js";
 import {fetchSalesData} from "../hooks/salesData.js";
 import { useListSales } from "../hooks/useListSales.js";
-import { flattenSalesData } from "../hooks/salesUtils.js";
+import { flattenSalesData } from "../utils/salesUtils.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
