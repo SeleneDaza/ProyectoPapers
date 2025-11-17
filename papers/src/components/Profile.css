@@ -58,3 +58,70 @@
   margin: 5px 0;
   font-size: 14px;
 }
+/* TABLET */
+@media (max-width: 1024px) {
+  .profile-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .profile-avatar {
+    font-size: 50px;
+  }
+
+  .profile-sections {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* MOBILE LARGE */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 15px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-avatar {
+    font-size: 45px;
+  }
+
+  .profile-name {
+    font-size: 18px;
+  }
+
+  .profile-sections {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .profile-box {
+    padding: 12px;
+  }
+}
+
+/* MOBILE SMALL */
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 12px;
+  }
+
+  .profile-avatar {
+    font-size: 38px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .profile-box h4 {
+    font-size: 15px;
+  }
+
+  .profile-box p {
+    font-size: 13px;
+  }
+}

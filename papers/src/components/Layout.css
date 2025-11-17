@@ -133,3 +133,124 @@ html, body {
   height: calc(100% - 60px);
   box-sizing: border-box;
 }
+/* ================================
+   📱 Responsive: Tablets y móviles
+   ================================ */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .header {
+    padding: 10px;
+  }
+
+  .search-bar input {
+    width: 150px;
+  }
+
+  .user-info {
+    gap: 15px;
+  }
+
+  .page-content {
+    padding: 1.5rem;
+  }
+}
+
+/* ================================
+   📱 Responsive: Móviles grandes
+   ================================ */
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .sidebar-menu li {
+    padding: 8px 10px;
+    margin: 0;
+  }
+
+  .logout-btn {
+    margin: 0;
+  }
+
+  .main-content {
+    height: calc(100% - 60px);
+  }
+
+  .header {
+    height: auto;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .search-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar input {
+    width: 80%;
+  }
+
+  .header-right {
+    gap: 10px;
+  }
+
+  .page-content {
+    padding: 1rem;
+  }
+}
+
+/* ================================
+   📱 Responsive: Móviles pequeños
+   ================================ */
+@media (max-width: 480px) {
+  .sidebar {
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+  }
+
+  .sidebar-menu {
+    gap: 5px;
+  }
+
+  .sidebar-menu li {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .header {
+    padding: 8px;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .search-bar input {
+    width: 90%;
+    padding: 5px 8px;
+  }
+
+  .page-content {
+    padding: 0.8rem;
+  }
+}

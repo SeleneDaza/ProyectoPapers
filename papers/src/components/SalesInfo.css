@@ -102,3 +102,110 @@
     text-align: center;
     color: #999;
 }
+/* ============================== */
+/* 📌 TABLET (≤1024px)            */
+/* ============================== */
+@media (max-width: 1024px) {
+
+    .filter-row {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .input-group {
+        width: 200px;
+    }
+
+    .search-btn {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* ============================== */
+/* 📌 MOBILE LARGE (≤768px)       */
+/* ============================== */
+@media (max-width: 768px) {
+
+    .search-filter-container {
+        padding: 15px;
+    }
+
+    .filter-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .filter-row label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .input-group,
+    .filter-row select,
+    .filter-row .date-input {
+        width: 100%;
+    }
+
+    .search-btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sales-table th,
+    .sales-table td {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .sales-table-container {
+        overflow-x: auto;
+    }
+}
+
+
+/* ============================== */
+/* 📌 MOBILE SMALL (≤480px)       */
+/* ============================== */
+@media (max-width: 480px) {
+
+    .search-filter-container {
+        padding: 12px;
+        border-radius: 6px;
+    }
+
+    .filter-row {
+        gap: 8px;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .text-input {
+        font-size: 0.9rem;
+    }
+
+    .search-btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .sales-table th {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .sales-table td {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .no-data {
+        font-size: 0.9rem;
+    }
+}
