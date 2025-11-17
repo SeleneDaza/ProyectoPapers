@@ -1,9 +1,10 @@
 // Reports.jsx
 import React, { useState, useEffect, useMemo } from 'react';
-import api from '../hooks/api.js'; 
+import api from '../hooks/api.js'; // 👈 Importamos el API real
 import '../components/Reports.css';
 import Layout from './Layout.jsx';
 
+// 1. DEFINICIÓN ESTRUCTURAL DE CATEGORÍAS (FIJAS)
 const STATIC_REPORT_CATEGORIES = [
     { id: 'clients', name: 'Clientes y Proveedores', sections: ['Listado de Clientes', 'Detalle de Proveedores', 'Saldos Pendientes'] },
     { id: 'purchases', name: 'Compras y gastos', sections: ['Gastos por Categoría', 'Facturas de Compra', 'Reporte de Compras'] },
@@ -22,10 +23,11 @@ function Reports() {
         [selectedCategory]
     );
 
-    // LÓGICA DE FETCHING (Esta parte ya la tienes perfecta)
+    // LÓGICA DE FETCHING DINÁMICO
     useEffect(() => {
         const loadReport = async () => {
             if (!selectedReport) return;
+
             setIsLoading(true);
             setError(null);
             setReportContent(null); 
@@ -33,6 +35,7 @@ function Reports() {
             try {
                 let endpoint = '';
                 
+                // Mapeo de nombres a endpoints
                 if (selectedReport === 'Listado de Clientes') {
                     endpoint = '/reportes/listado-clientes';
                 } 
@@ -42,9 +45,13 @@ function Reports() {
                 else if (selectedReport === 'Gastos por Categoría') {
                     endpoint = '/reportes/gastos-por-categoria';
                 } 
+                else if (selectedReport === 'Reporte de Compras') { // 👈 Reporte nuevo
+                    endpoint = '/reportes/reporte-compras';
+                }
                 else {
                     throw new Error(`El reporte "${selectedReport}" aún no está implementado.`);
                 }
+
                 const response = await api.get(endpoint);
                 setReportContent(response.data); 
 
@@ -56,10 +63,11 @@ function Reports() {
                 setIsLoading(false);
             }
         };
+
         loadReport();
     }, [selectedReport]); 
 
-    // Lógica para cambiar la categoría (Esta lógica ya la tenías bien)
+    // Lógica para cambiar la categoría
     const handleCategoryChange = (categoryId) => {
         const newCategory = STATIC_REPORT_CATEGORIES.find(c => c.id === categoryId);
         setSelectedCategory(categoryId);
@@ -69,6 +77,7 @@ function Reports() {
             setSelectedReport(null);
         }
     };
+
 
     // --- Renderizado del Contenido del Visualizador ---
     const renderReportContent = () => {
@@ -106,15 +115,12 @@ function Reports() {
                         </thead>
                         <tbody>
                             {reportContent.map((item) => (
-                                <tr key={item.identification}>
-                                    <td>{item.identification}</td>
-                                    {/* ⚠️ CORRECCIÓN PEQUEÑA: 
-                                        Tu DTO usa 'names' y 'lastNames' (definido en UserMapper)
-                                    */}
-                                    <td>{`${item.names} ${item.lastNames || ''}`}</td>
+                                <tr key={item.identificacion}>
+                                    <td>{item.identificacion}</td>
+                                    <td>{`${item.nombres} ${item.apellidos || ''}`}</td>
                                     <td>{item.email}</td>
-                                    <td>{item.city}</td>
-                                    <td>{item.address}</td>
+                                    <td>{item.ciudad}</td>
+                                    <td>{item.direccion}</td>
                                     <td>{item.active ? "Activo" : "Inactivo"}</td>
                                 </tr>
                             ))}
@@ -124,14 +130,11 @@ function Reports() {
             );
         }
         
-        // --- ⚠️ CAMBIO 3: AÑADIR ESTE BLOQUE 'IF' ---
         // B. Renderizado para 'Gastos por Categoría'
         if (selectedReport === 'Gastos por Categoría' && Array.isArray(reportContent)) {
-            
             if (reportContent.length === 0) {
                 return <p>No se encontraron gastos para mostrar.</p>;
             }
-
             return (
                 <div className="report-table-container">
                     <h3>{selectedReport}</h3>
@@ -146,7 +149,6 @@ function Reports() {
                             {reportContent.map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.category}</td>
-                                    {/* Usamos (|| 0) como defensa por si el total es null */}
                                     <td>{`$ ${(item.totalSpend || 0).toLocaleString('es-CO')}`}</td>
                                 </tr>
                             ))}
@@ -155,9 +157,42 @@ function Reports() {
                 </div>
             );
         }
-        // --- FIN DEL CAMBIO 3 ---
 
-        // C. Fallbacks
+        // C. Renderizado para 'Reporte de Compras' (El nuevo)
+        if (selectedReport === 'Reporte de Compras' && Array.isArray(reportContent)) {
+            if (reportContent.length === 0) {
+                return <p>No se encontraron compras para mostrar.</p>;
+            }
+            return (
+                <div className="report-table-container">
+                    <h3>{selectedReport}</h3>
+                    <table className="report-table">
+                        <thead>
+                            <tr>
+                                <th>ID Compra</th>
+                                <th>Fecha</th>
+                                <th>Total</th>
+                                <th>Proveedor</th>
+                                <th>Identificación Proveedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {reportContent.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.id}</td>
+                                    <td>{item.date}</td>
+                                    <td>{`$ ${(item.totalValue || 0).toLocaleString('es-CO')}`}</td>
+                                    <td>{item.supplierName}</td>
+                                    <td>{item.supplierIdentification}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        // --- Fallbacks ---
         if (reportContent && !Array.isArray(reportContent)) {
              return <p>El formato de este reporte (JSON) no es reconocido.</p>;
         }
@@ -169,8 +204,11 @@ function Reports() {
         <Layout>
             {/* TU ESTRUCTURA JSX (INTACTA) */}
             <div className="reports-page-layout">
+            
             <div className="reports-sidebar">
+                
                 <h3 className="sidebar-title">Categorías de Reportes</h3> 
+
                 <div className="report-categories-list">
                     {STATIC_REPORT_CATEGORIES.map(category => (
                         <div 
@@ -182,6 +220,7 @@ function Reports() {
                         </div>
                     ))}
                 </div>
+
                 {activeCategory && (
                     <div className="report-sections-detail">
                         <h4 className="detail-title">{activeCategory.name}</h4>
@@ -197,10 +236,12 @@ function Reports() {
                     </div>
                 )}
             </div>
+
             <div className="report-visualizer">
                 <div className="report-viewer-content">
                     {renderReportContent()}
                 </div>
+
                 <div className="pagination-and-export">
                     <div className="pagination-controls">
                         <button className="page-control">{"<"}</button>
@@ -213,9 +254,10 @@ function Reports() {
                     </button>
                 </div>
             </div>
+
         </div>
         </Layout>
     );
 }
 
-export default Reports; 
+export default Reports;
