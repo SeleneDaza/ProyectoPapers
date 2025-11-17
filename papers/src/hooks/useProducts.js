@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api.js';
+
 
 // La URL de tu API de Java
-const API_URL = 'http://localhost:8080/api/productos';
+const API_URL = '/productos';
 
 /**
  * Este es un Hook personalizado que maneja la lógica
@@ -20,7 +21,7 @@ export function useProducts() {
     const fetchProducts = async () => {
       try {
         // 1. Llama a tu API de Java
-        const response = await axios.get(API_URL);
+        const response = await api.get(API_URL);
         // 2. Guarda los datos en el estado
         setProducts(response.data);
       } catch (error) {

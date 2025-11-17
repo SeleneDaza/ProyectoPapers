@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api.js';
 
-const API_URL = 'http://localhost:8080/api/usuarios'; 
+
+const API_URL = '/usuarios'; 
 
 /**
  * Hook para listar Usuarios.
@@ -20,7 +21,7 @@ export function useListUsers(roleFilter = null) {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(API_URL);
+      const response = await api.get(API_URL);
       
       let data = response.data;
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api.js';
 
 // 1. Apunta al endpoint de compras del backend
-const API_URL = 'http://localhost:8080/api/compras';
+const API_URL = '/compras';
 
 export function useListPurchases() {
   // 2. Nombres de variables cambiados a 'purchases'
@@ -13,7 +13,7 @@ export function useListPurchases() {
   useEffect(() => {
     const fetchPurchases = async () => {
       try {
-        const response = await axios.get(API_URL);
+        const response = await api.get(API_URL);
         // 3. Guarda la lista de PurchaseDTO
         setPurchases(response.data);
       } catch (err) {
