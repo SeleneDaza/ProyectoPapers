@@ -4,17 +4,17 @@ import PurchaseInfo from "./PurchaseInfo.jsx";
 import '../components/Purchase.css';
 import { fetchSupplierData } from "../hooks/SupplierData.js";
 import {fetchPurchaseData} from "../hooks/PurchaseData.js";
+import { useListUsers } from "../hooks/useListUsers.js";
+import { useListPurchases } from "../hooks/useListPurchases.js";
+import { flattenPurchaseData } from "../utils/purchaseUtils.js";;
 import Layout from "./Layout.jsx";
 
 function Purchase() {
   const [activeTab, setActiveTab] = useState("Proovedor");
-  const [supplier, setSupplier] = useState(null);
-  const [purchase, setpurchase] = useState(null);
+  const { users: suppliers, loading: suppliersLoading, error: suppliersError } = useListUsers("PROVEEDOR");
+  const { purchases, loading: purchasesLoading, error: purchasesError } = useListPurchases();
 
-  useEffect(() => {
-    fetchSupplierData().then((data) => setSupplier(data));
-    fetchPurchaseData().then((data)=> setpurchase(data))
-  }, []);
+  const flattenedPurchases = purchases.length > 0 ? flattenPurchaseData(purchases) : [];
 
   //REVISAR ESTO, SE SUPONE ES PARA EL FILTRO DE BUSQUEDA PERO DEPENDE DEL BACKEND
   const [clientSearch, setClientSearch] = useState("");
@@ -41,43 +41,38 @@ function Purchase() {
 
           {activeTab === "Proovedor" && (
             <>
-            <div className="client-header-bar">
-             {/* BUSCADOR EXTENDIBLE */}
-             <div className="client-name">Nombre del proveedor</div>
-              <input
-                className="autocomplete-input"
-                type="text"
-                placeholder="Buscar proveedor..."
-                value={clientSearch}
-                onChange={(e) => setClientSearch(e.target.value)}
-              />
-
-
-            <div className="actions-section">
-                <button className="action-btn">Añadir</button>
-                <button className="action-btn">Exportar</button>
-                <button className="action-btn">Editar</button>
-                <button className="action-btn">Eliminar</button>
-              </div>
-            </div>
-
+              {/* ... (Barra de búsqueda y botones) ... */}
               <h2 className="page-title">Información del Proovedor</h2>
-              {supplier ? (
-                <SupplierInfo supplier={supplier} />
-              ) : (
-                <p className="loading">Cargando información del Proovedor...</p>
+              
+              {/* --- ⚠️ CAMBIOS (Render Proveedor) --- */}
+              {suppliersLoading && (
+                <p className="loading">Cargando información del Proveedor...</p>
               )}
+              {suppliersError && (
+                <p className="loading">Error al cargar proveedores.</p>
+              )}
+              {!suppliersLoading && !suppliersError && suppliers && suppliers.length > 0 && (
+                // Mostramos el primer proveedor (siguiendo el patrón de Sales)
+                <SupplierInfo supplier={suppliers[0]} />
+              )}
+              {/* --- FIN CAMBIOS --- */}
             </>
           )}
 
           {activeTab === "documentos" && (
             <>
               <h2 className="page-title">Filtro de busqueda</h2>
-              {purchase ? (
-                <PurchaseInfo purchase={purchase} />
+              
+              {/* --- ⚠️ CAMBIOS (Render Documentos) --- */}
+              {purchasesLoading ? (
+                <p className="loading">Cargando información de las compras...</p>
+              ) : purchasesError ? (
+                <p className="loading">Error al cargar la información de compras.</p>
               ) : (
-                <p className="loading">Cargando información de las venta...</p>
+                // Pasamos la data APLANADA
+                <PurchaseInfo purchase={flattenedPurchases} /> 
               )}
+              {/* --- FIN CAMBIOS --- */}
             </>
           )}
         </div>

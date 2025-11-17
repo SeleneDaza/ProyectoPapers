@@ -3,7 +3,7 @@ import React from 'react';
 import PurchaseDocumentsTable from './PurchaseDocumentTable.jsx'; // Importamos la tabla
 import '../components/SalesInfo.css';
 
-function purchaseInfo({ purchase }) { // Recibe el 'purchase' fetchado de Sells.jsx
+function PurchaseInfo({ purchase }) { // Recibe el 'purchase' fetchado de Sells.jsx
   return (
     <div className="purchase-info-view">
       {/* El título "Filtro de busqueda" ya se renderiza en Sells.jsx, pero lo incluimos si quieres más control aquí */}
@@ -13,7 +13,7 @@ function purchaseInfo({ purchase }) { // Recibe el 'purchase' fetchado de Sells.
         
         {/* Fila 1: Filtros de Cliente y N° Factura */}
         <div className="filter-row">
-          <label>Cliente</label>
+          <label>Proveedor</label>
           {/* Input de Cliente */}
           <div className="input-group">
             <input type="text" placeholder="Buscar" className="text-input" />
@@ -60,4 +60,4 @@ function purchaseInfo({ purchase }) { // Recibe el 'purchase' fetchado de Sells.
   );
 }
 
-export default purchaseInfo;
+export default PurchaseInfo;

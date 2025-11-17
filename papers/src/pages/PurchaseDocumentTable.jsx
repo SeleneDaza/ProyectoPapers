@@ -2,13 +2,13 @@
 import React from 'react';
 
 // Función de ayuda para formatear a COP (asumiendo que los datos vienen como números)
-const formatCOP = (amount) => `${amount.toLocaleString('es-CO')} COP`;
+const formatCOP = (amount) => `${(amount || 0).toLocaleString('es-CO')} COP`;
 
 function PurchaseDocumentsTable({ purchase }) {
   // Los títulos de las columnas, tal como se ven en la imagen
   const headers = [
     'N° Factura',
-    'Cliente',
+    'Proveedor',
     'Producto',
     'Precio unitario',
     'Cantidad',
@@ -34,18 +34,18 @@ function PurchaseDocumentsTable({ purchase }) {
           </tr>
         </thead>
         <tbody>
-          {/* Mapeamos los datos recibidos por prop para crear las filas */}
-          {purchase.map((sale, index) => (
-            <tr key={sale.invoiceNumber || index}>
-              <td>{sale.invoiceNumber}</td>
-              <td>{sale.client}</td>
-              <td>{sale.product}</td>
-              <td>{formatCOP(sale.unitPrice)}</td>
-              <td>{sale.quantity}</td>
-              <td>{formatCOP(sale.subtotalValue)}</td>
-              <td>{formatCOP(sale.taxValue)}</td>
-              <td>{formatCOP(sale.discountValue)}</td>
-              <td>{formatCOP(sale.totalValue)}</td>
+          {/* ⚠️ CAMBIO: 'sale' -> 'item' y 'client' -> 'supplier' */}
+          {purchase.map((item, index) => (
+            <tr key={`${item.invoiceNumber}-${index}`}>
+              <td>{item.invoiceNumber}</td>
+              <td>{item.supplier}</td> {/* Accede al campo 'supplier' aplanado */}
+              <td>{item.product}</td>
+              <td>{formatCOP(item.unitPrice)}</td>
+              <td>{item.quantity}</td>
+              <td>{formatCOP(item.subtotal)}</td>
+              <td>{formatCOP(item.taxes)}</td>
+              <td>{formatCOP(item.discounts)}</td>
+              <td>{formatCOP(item.totalValue)}</td>
             </tr>
           ))}
         </tbody>
