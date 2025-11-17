@@ -84,6 +84,17 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s;
     cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card.selected {
+  /* Estilo cuando está seleccionada */
+  border-color: #007bff; /* Un borde azul, por ejemplo */
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
 .product-image-container {
