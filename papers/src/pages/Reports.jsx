@@ -1,7 +1,6 @@
 // Reports.jsx
 import React, { useState, useEffect, useMemo } from 'react';
-import api from '../hooks/api.js'; // 👈 Importamos el API real
-// import { fetchReportPreview } from '../hooks/reportsData.js'; // 👈 Ya no se usa
+import api from '../hooks/api.js'; // Importamos la nueva función
 import '../components/Reports.css';
 import Layout from './Layout.jsx';
 
@@ -24,7 +23,7 @@ function Reports() {
         [selectedCategory]
     );
 
-    // LÓGICA DE FETCHING DINÁMICO (Esta lógica ya la tenías bien)
+    // LÓGICA DE FETCHING DINÁMICO
     useEffect(() => {
         const loadReport = async () => {
             if (!selectedReport) return;
@@ -38,13 +37,18 @@ function Reports() {
                 
                 if (selectedReport === 'Listado de Clientes') {
                     endpoint = '/reportes/listado-clientes';
-                } else {
+                } 
+                // ⚠️ CAMBIO 1: Añadir el 'else if' para Proveedores
+                else if (selectedReport === 'Detalle de Proveedores') { 
+                    endpoint = '/reportes/listado-proveedores';
+                } 
+                // --- Fin Cambio 1 ---
+                else {
                     throw new Error(`El reporte "${selectedReport}" aún no está implementado.`);
                 }
 
                 const response = await api.get(endpoint);
                 
-                // Guardamos los datos JSON (la lista de UserDTO)
                 setReportContent(response.data); 
 
             } catch (err) {
@@ -71,8 +75,7 @@ function Reports() {
     };
 
 
-    // --- ⚠️ AQUÍ ESTÁ EL ÚNICO CAMBIO ---
-    // Renderizado del Contenido del Visualizador
+    // --- Renderizado del Contenido del Visualizador ---
     const renderReportContent = () => {
         if (!selectedReport) {
             return <p className="initial-message">Seleccione un reporte para su vista previa</p>;
@@ -84,21 +87,26 @@ function Reports() {
             return <p className="error-message">{error}</p>;
         }
         
-        // --- INICIO DE LA MODIFICACIÓN ---
-
-        // A. Renderizado específico para "Listado de Clientes" (JSON)
-        if (selectedReport === 'Listado de Clientes' && Array.isArray(reportContent)) {
+        // ⚠️ CAMBIO 2: Modificar el 'if' para que incluya ambos reportes
+        if (
+            (selectedReport === 'Listado de Clientes' || selectedReport === 'Detalle de Proveedores') && 
+            Array.isArray(reportContent)
+        ) {
             
-            // Si no hay clientes
             if (reportContent.length === 0) {
-                return <p>No se encontraron clientes para mostrar.</p>;
+                // Mensaje específico
+                if (selectedReport === 'Listado de Clientes') {
+                    return <p>No se encontraron clientes para mostrar.</p>;
+                } else {
+                    return <p>No se encontraron proveedores para mostrar.</p>;
+                }
             }
 
-            // Si hay clientes, dibujamos la tabla (basado en tu UI)
+            // Si hay datos, dibujamos la tabla (es la misma tabla para ambos)
             return (
                 <div className="report-table-container">
                     <h3>{selectedReport}</h3>
-                    <table className="report-table"> {/* Asumo que tienes estilos para 'report-table' */}
+                    <table className="report-table">
                         <thead>
                             <tr>
                                 <th>Identificación</th>
@@ -110,14 +118,18 @@ function Reports() {
                             </tr>
                         </thead>
                         <tbody>
-                            {reportContent.map((cliente) => (
-                                <tr key={cliente.identificacion}>
-                                    <td>{cliente.identificacion}</td>
-                                    <td>{`${cliente.nombres} ${cliente.apellidos || ''}`}</td>
-                                    <td>{cliente.email}</td>
-                                    <td>{cliente.ciudad}</td>
-                                    <td>{cliente.direccion}</td>
-                                    <td>{cliente.active ? "Activo" : "Inactivo"}</td>
+                            {/* 'item' puede ser un cliente o un proveedor (UserDTO) */}
+                            {reportContent.map((item) => (
+                                <tr key={item.identificacion}>
+                                    <td>{item.identificacion}</td>
+                                    {/* Usamos los nombres del DTO: 
+                                      'names', 'lastNames', 'city', 'address' 
+                                    */}
+                                    <td>{`${item.nombres} ${item.apellidos || ''}`}</td>
+                                    <td>{item.email}</td>
+                                    <td>{item.ciudad}</td>
+                                    <td>{item.direccion}</td>
+                                    <td>{item.active ? "Activo" : "Inactivo"}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -125,6 +137,8 @@ function Reports() {
                 </div>
             );
         }
+        // --- Fin Cambio 2 ---
+
 
         // B. Fallback para reportes (JSON) que no sabemos cómo renderizar
         if (reportContent && !Array.isArray(reportContent)) {
@@ -134,7 +148,6 @@ function Reports() {
         // C. Fallback por si 'reportContent' está vacío
         return <p className="initial-message">Seleccione un reporte para su vista previa</p>;
     };
-    // --- FIN DE LA MODIFICACIÓN ---
 
 
     return (
