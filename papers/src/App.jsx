@@ -8,6 +8,7 @@ import UsuariosPage from "./pages/EmployeeProfile.jsx";
 import ReportesPage from "./pages/Reports.jsx";
 import ProfilePage from "./pages/Profile.jsx";
 import Notifications from "./pages/Notification.jsx";
+import CompanyData from "./pages/CompanyData.jsx";
 import "./App.jsx";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/reportes" element={<ReportesPage />} />
                     <Route path="/perfil" element={<ProfilePage />} />
                     <Route path="/notificaciones" element={<Notifications />} />
+                    <Route path="/datos-empresa" element={<CompanyData />} />
                   </Routes>
                 </div>
           }

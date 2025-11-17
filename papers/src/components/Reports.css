@@ -148,3 +148,130 @@
 .export-pdf-btn:hover {
     color: var(--text-blue);
 }
+
+/* ----------------------------- */
+/* TABLET - Max width 1024px     */
+/* ----------------------------- */
+@media (max-width: 1024px) {
+
+    .reports-sidebar {
+        width: 240px;
+    }
+
+    .report-category-item {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    .report-sections-detail {
+        padding: 8px 16px;
+    }
+
+    .report-visualizer {
+        padding: 15px;
+    }
+
+    .report-viewer-content {
+        margin-bottom: 10px;
+    }
+
+    .pagination-and-export {
+        justify-content: space-between;
+    }
+}
+
+/* ----------------------------- */
+/* MOBILE LARGE - Max width 768px */
+/* ----------------------------- */
+
+
+@media (max-width: 768px) {
+
+    .reports-page-layout {
+        flex-direction: column;
+    }
+
+    .reports-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px 0;
+    }
+
+    .sidebar-title {
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .report-category-item {
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .report-sections-detail {
+        padding: 10px 0;
+        border-top: none;
+    }
+
+    .report-section-link {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .report-visualizer {
+        padding: 15px;
+    }
+
+    .report-title-preview {
+        text-align: center;
+    }
+
+    .pagination-and-export {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+
+/* ----------------------------- */
+/* MOBILE SMALL - Max width 480px */
+/* ----------------------------- */
+
+
+@media (max-width: 480px) {
+
+    .sidebar-title {
+        font-size: 1rem;
+    }
+
+    .report-category-item {
+        font-size: 0.9rem;
+        padding: 8px 0;
+    }
+
+    .report-section-link {
+        font-size: 0.85rem;
+    }
+
+    .report-title-preview {
+        font-size: 1.2rem;
+    }
+
+    .initial-message {
+        font-size: 1rem;
+    }
+
+    .page-control {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .page-number {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .export-pdf-btn {
+        font-size: 1.2rem;
+    }
+}

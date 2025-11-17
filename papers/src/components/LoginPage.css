@@ -98,16 +98,112 @@ button:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 950px) {
+/* ==========================================
+   📌 Tablets — max-width 768px
+   ========================================== */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 30px 35px;
+    max-width: 320px;
+  }
+
+  .logo {
+    width: 130px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    font-size: 0.95rem;
+    padding: 10px 8px;
+    margin-bottom: 16px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .forgot-password {
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   📌 Móviles — max-width 600px
+   ========================================== */
+@media (max-width: 600px) {
   .login-container {
     flex-direction: column;
   }
 
   .left-side {
-    height: 40vh;
+    flex: none;
+    height: 32vh;
   }
 
   .right-side {
-    height: 60vh;
+    flex: none;
+    height: 68vh;
+    padding: 20px;
+  }
+
+  .login-box {
+    max-width: 85%;
+    padding: 25px;
+    border-radius: 12px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 9px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles pequeños — max-width 430px
+   ========================================== */
+@media (max-width: 430px) {
+  .logo {
+    width: 120px;
+  }
+
+  .login-box {
+    max-width: 90%;
+    padding: 22px;
+  }
+
+  .field-label {
+    font-size: 0.9rem;
+  }
+
+  input {
+    font-size: 0.9rem;
+    padding: 9px 8px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .forgot-password {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================
+   📌 Móviles muy pequeños — max-width 360px
+   ========================================== */
+@media (max-width: 360px) {
+  .login-box {
+    padding: 18px;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  button {
+    padding: 9px;
   }
 }

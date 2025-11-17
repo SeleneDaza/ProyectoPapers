@@ -9,6 +9,7 @@
   flex-grow: 1; 
   max-width: 400px; 
   margin-right: 20px;
+  background-color: #ffff;
 }
 
 .search-bar input {
@@ -18,6 +19,8 @@
   border-radius: 5px;
   font-size: 16px;
   width: 100%; 
+  background-color: #ffffff !important; 
+  color: #000 !important;
 }
 
 .header-right {
@@ -76,4 +79,82 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ===========================
+   📌 Tablets — max-width 1024px
+   =========================== */
+@media (max-width: 1024px) {
+  .search-bar {
+    max-width: 300px;
+  }
+
+  .help-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* ===========================
+   📌 Pantallas medianas — max-width 768px
+   =========================== */
+@media (max-width: 768px) {
+
+  .header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .search-bar {
+    order: 3;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .header-right {
+    order: 2;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .help-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .extra-button,
+  .perfil-button {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+}
+
+/* ===========================
+   📌 Móviles pequeños — max-width 480px
+   =========================== */
+@media (max-width: 480px) {
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .header-right {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .help-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

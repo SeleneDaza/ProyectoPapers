@@ -66,3 +66,74 @@
   transform: translateY(-3px);
 }
 
+/* 📌 Tablet (≤ 992px) */
+@media (max-width: 992px) {
+
+  .gauge {
+    width: 250px;
+    height: 130px;
+  }
+
+  .needle {
+    height: 100px;
+  }
+
+  .dashboard-button {
+    width: 180px;
+    height: 90px;
+    font-size: 15px;
+  }
+}
+
+/* 📌 Móvil grande (≤ 768px) */
+@media (max-width: 768px) {
+
+  .dashboard {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .gauge {
+    width: 220px;
+    height: 110px;
+  }
+
+  .needle {
+    height: 90px;
+  }
+
+  .buttons-section {
+    gap: 1.5rem;
+  }
+
+  .dashboard-button {
+    width: 160px;
+    height: 85px;
+    font-size: 14px;
+  }
+}
+
+/* 📌 Móvil pequeño (≤ 480px) */
+@media (max-width: 480px) {
+
+  .dashboard {
+    gap: 1.2rem;
+  }
+
+  .gauge {
+    width: 180px;
+    height: 90px;
+  }
+
+  .needle {
+    height: 75px;
+  }
+
+  .dashboard-button {
+    width: 100%;
+    max-width: 230px;
+    height: 75px;
+    font-size: 13px;
+    border-radius: 12px;
+  }
+}

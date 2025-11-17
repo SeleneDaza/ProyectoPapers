@@ -175,3 +175,113 @@ body {
 .data-column {
     flex: 1;
 }
+
+/* ===========================
+   📌 Tablets — max-width 1024px
+   =========================== */
+@media (max-width: 1024px) {
+
+    .profile-content-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .profile-main-info {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .basic-data-box {
+        grid-column: 1 / 3;
+    }
+}
+
+/* ===========================
+   📌 Pantallas medianas — max-width 768px
+   =========================== */
+@media (max-width: 768px) {
+
+    .profile-header-toolbar {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .action-buttons-group {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .tabs-container-profile {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+    }
+
+    .profile-content-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .role-box,
+    .billing-data-box,
+    .basic-data-box {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+
+    .profile-main-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-avatar-large {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .data-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .data-row input,
+    .data-input-select {
+        width: 100%;
+    }
+
+    .data-column-split {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ===========================
+   📌 Móviles pequeños — max-width 480px
+   =========================== */
+@media (max-width: 480px) {
+
+    .toolbar-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tab-profile {
+        padding: 8px 14px;
+        font-size: 0.9rem;
+    }
+
+    .profile-name {
+        font-size: 1.4rem;
+    }
+
+    .profile-box {
+        padding: 15px;
+    }
+
+    .profile-avatar-large {
+        font-size: 45px;
+    }
+}

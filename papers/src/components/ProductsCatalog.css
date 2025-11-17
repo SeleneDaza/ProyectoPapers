@@ -107,3 +107,86 @@ body {
     margin: 0;
     padding-top: 5px;
 }
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .toolbar-container-inline {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search-input-group-inline {
+    max-width: 100%;
+  }
+
+  .products-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+}
+
+/* MOBILE LARGE */
+@media (max-width: 768px) {
+
+  /* Toolbar en columna */
+  .toolbar-container-inline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .action-buttons-group-inline {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .toolbar-btn.inline-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  /* Grid más compacto */
+  .products-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .product-image-container {
+    height: 120px;
+  }
+}
+
+/* MOBILE SMALL */
+@media (max-width: 480px) {
+
+  /* Inputs */
+  .search-input-group-inline {
+    padding: 6px 10px;
+  }
+
+  .search-input-compact {
+    font-size: 0.9rem;
+  }
+
+  .toolbar-btn.inline-btn {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Tarjetas */
+  .products-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-image-container {
+    height: 100px;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+  }
+}

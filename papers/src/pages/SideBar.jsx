@@ -10,7 +10,7 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <img src={logo} alt="Logo" className="sidebar-logo" />
+      <img src={logo} alt="Logo" className="sidebar-logo" onClick={() => navigate("/datos-empresa")}/>
 
       <ul className="sidebar-menu">
         <li onClick={() => navigate("/dashboard")}>

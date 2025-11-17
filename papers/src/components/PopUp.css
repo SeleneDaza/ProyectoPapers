@@ -95,3 +95,113 @@
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+/* ==========================================
+   📌 Tablets — max-width 900px
+   ========================================== */
+@media (max-width: 900px) {
+  .popup-container {
+    width: 380px;
+    padding: 35px 40px;
+  }
+
+  .popup-title {
+    font-size: 20px;
+  }
+
+  .popup-message {
+    font-size: 15px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles grandes — max-width 600px
+   ========================================== */
+@media (max-width: 600px) {
+  .popup-container {
+    width: 90%;
+    padding: 30px 25px;
+  }
+
+  .popup-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+  }
+
+  .popup-title {
+    font-size: 18px;
+  }
+
+  .popup-message {
+    font-size: 14px;
+  }
+
+  .popup-buttons {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-confirm,
+  .btn-cancel {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   📌 Móviles medianos — max-width 420px
+   ========================================== */
+@media (max-width: 420px) {
+  .popup-container {
+    padding: 25px 20px;
+    width: 92%;
+  }
+
+  .popup-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 32px;
+  }
+
+  .popup-title {
+    font-size: 17px;
+  }
+
+  .popup-message {
+    font-size: 13.5px;
+  }
+
+  .popup-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-confirm,
+  .btn-cancel {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles pequeños — max-width 340px
+   ========================================== */
+@media (max-width: 340px) {
+  .popup-container {
+    padding: 20px 15px;
+  }
+
+  .popup-title {
+    font-size: 16px;
+  }
+
+  .popup-message {
+    font-size: 13px;
+  }
+
+  .popup-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
+}

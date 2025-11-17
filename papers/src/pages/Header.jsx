@@ -20,7 +20,6 @@ function Header() {
             <FaQuestionCircle /> Ayuda
           </button>
           <button className="extra-button" onClick={() => navigate("/notificaciones")}><FaBell className="header-icon" /></button>
-          <button className="extra-button"><FaCog className="header-icon" /></button>
 
           <button className="perfil-button">
             <div className="user-info" onClick={() => navigate("/perfil")}>

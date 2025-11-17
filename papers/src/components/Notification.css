@@ -82,3 +82,109 @@
   font-style: italic;
   color: #555;
 }
+/* ==========================================
+   📌 Tablets — max-width 900px
+   ========================================== */
+@media (max-width: 900px) {
+  .notif-box {
+    padding: 25px;
+  }
+
+  .notif-title {
+    font-size: 1.7rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 40px auto 40px;
+  }
+
+  .notif-small-btn {
+    width: 50px;
+    height: 28px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles grandes — max-width 600px
+   ========================================== */
+@media (max-width: 600px) {
+  .notif-box {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .notif-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .notif-top-btns {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .notif-row {
+    grid-template-columns: 35px auto 35px;
+    padding: 10px 0;
+  }
+
+  .notif-check {
+    width: 16px;
+    height: 16px;
+  }
+
+  .notif-star {
+    font-size: 20px;
+  }
+
+  .notif-accept {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles pequeños — max-width 420px
+   ========================================== */
+@media (max-width: 420px) {
+  .notif-box {
+    padding: 15px;
+  }
+
+  .notif-title {
+    font-size: 1.3rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 30px auto 30px;
+  }
+
+  .notif-small-btn {
+    width: 45px;
+    height: 26px;
+    border-radius: 8px;
+  }
+
+  .notif-accept {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   📌 Móviles muy pequeños — max-width 340px
+   ========================================== */
+@media (max-width: 340px) {
+  .notif-title {
+    font-size: 1.2rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 25px auto 25px;
+  }
+
+  .notif-star {
+    font-size: 18px;
+  }
+}
