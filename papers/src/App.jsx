@@ -6,6 +6,8 @@ import ComprasPage from "./pages/Purchase.jsx";
 import ProductsCatalog from "./pages/ProductsCatalog";
 import UsuariosPage from "./pages/EmployeeProfile.jsx";
 import ReportesPage from "./pages/Reports.jsx";
+import PurchaseForm from "./pages/PurchaseFrom.jsx";
+import SaleForm from "./pages/SaleForm.jsx";
 import ProfilePage from "./pages/Profile.jsx";
 import Notifications from "./pages/Notification.jsx";
 import CompanyData from "./pages/CompanyData.jsx";
@@ -29,6 +31,8 @@ function App() {
                     <Route path="/productos" element={<ProductsCatalog />} />
                     <Route path="/usuarios" element={<UsuariosPage />} />
                     <Route path="/reportes" element={<ReportesPage />} />
+                    <Route path="/register-purchase" element={<PurchaseForm />} />
+                    <Route path="/register-sale" element={<SaleForm />} />
                     <Route path="/perfil" element={<ProfilePage />} />
                     <Route path="/notificaciones" element={<Notifications />} />
                     <Route path="/datos-empresa" element={<CompanyData />} />

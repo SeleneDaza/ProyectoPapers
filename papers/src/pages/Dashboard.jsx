@@ -1,30 +1,50 @@
+// components/Dashboard.jsx
 import React from "react";
-import Sidebar from "./SideBar.jsx";
+import { useNavigate } from 'react-router-dom'; // 👈 Importa useNavigate para la navegación
 import "../components/Dashboard.css";
-import Header from "./Header.jsx";
-import Layout from "./Layout.jsx";
+import Layout from "./Layout.jsx"; // Asumiendo que Sidebar y Header se manejan dentro de Layout
 
 function Dashboard() {
-  return (
-      <Layout>
-        <div className="dashboard">
-          <h2>Objetivo de ventas</h2>
-          <div className="gauge">
-            <div className="needle"></div>
-          </div>
-          <div className="buttons-section">
-            <div className="dashboard-button">
-              <i className="fas fa-wallet"></i>
-              <p>Registrar una compra o gasto</p>
+    const navigate = useNavigate(); // Inicializa el hook de navegación
+
+    // Función para manejar el clic en el botón de "Registrar compra o gasto"
+    const handleRegisterPurchase = () => {
+        navigate('/register-purchase'); // Redirige a la ruta /register-purchase
+    };
+
+    // Función para manejar el clic en el botón de "Registrar una venta"
+    const handleRegisterSale = () => {
+        navigate('/register-sale'); // Redirige a la ruta /register-sale
+    };
+
+    return (
+        <Layout> {/* Layout engloba el contenido principal de la página */}
+            <div className="dashboard">
+                <h2>Objetivo de ventas</h2>
+                {/* Componente del medidor de ventas */}
+                <div className="gauge">
+                    <div className="needle"></div>
+                </div>
+                
+                {/* Sección de botones para acciones */}
+                <div className="buttons-section">
+                    {/* Botón para registrar una compra o gasto */}
+                    {/* Se añade el evento onClick que llama a handleRegisterPurchase */}
+                    <div className="dashboard-button" onClick={handleRegisterPurchase}>
+                        <i className="fas fa-wallet"></i> {/* Icono de Font Awesome */}
+                        <p>Registrar una compra o gasto</p>
+                    </div>
+                    
+                    {/* Botón para registrar una venta */}
+                    {/* Se añade el evento onClick que llama a handleRegisterSale */}
+                    <div className="dashboard-button" onClick={handleRegisterSale}>
+                        <i className="fas fa-cash-register"></i> {/* Icono de Font Awesome */}
+                        <p>Registrar una venta</p>
+                    </div>
+                </div>
             </div>
-            <div className="dashboard-button">
-              <i className="fas fa-cash-register"></i>
-              <p>Registrar una venta</p>
-            </div>
-          </div>
-        </div>
-      </Layout>
-  );
+        </Layout>
+    );
 }
 
 export default Dashboard;

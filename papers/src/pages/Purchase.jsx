@@ -35,7 +35,7 @@ function Purchase() {
               }`}
               onClick={() => setActiveTab("documentos")}
             >
-              Documentos de ventas
+              Documentos de compras
             </button>
           </div>
 
