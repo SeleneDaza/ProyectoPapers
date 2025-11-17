@@ -11,9 +11,11 @@ function LoginPage() {
   const [error, setError] = useState("");
   const navigate = useNavigate(); // 👈 hook de navegación
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const result = loginUser(username, password);
+    setError("");
+
+    const result = await loginUser(username, password);
 
     if (result.success) {
       setError("");
