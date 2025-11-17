@@ -1,19 +1,18 @@
 // Reports.jsx
 import React, { useState, useEffect, useMemo } from 'react';
-import api from '../hooks/api.js'; // 👈 Importamos el API real
+import api from '../hooks/api.js'; 
 import '../components/Reports.css';
 import Layout from './Layout.jsx';
 
-// 1. DEFINICIÓN ESTRUCTURAL DE CATEGORÍAS (FIJAS)
 const STATIC_REPORT_CATEGORIES = [
     { id: 'clients', name: 'Clientes y Proveedores', sections: ['Listado de Clientes', 'Detalle de Proveedores', 'Saldos Pendientes'] },
     { id: 'purchases', name: 'Compras y gastos', sections: ['Gastos por Categoría', 'Facturas de Compra', 'Reporte de Compras'] },
 ];
 
 function Reports() {
+    // ... (hooks: useState, useMemo) ...
     const [selectedCategory, setSelectedCategory] = useState(STATIC_REPORT_CATEGORIES[0].id);
     const [selectedReport, setSelectedReport] = useState(STATIC_REPORT_CATEGORIES[0].sections[0]);
-
     const [reportContent, setReportContent] = useState(null); 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -23,11 +22,11 @@ function Reports() {
         [selectedCategory]
     );
 
+
     // LÓGICA DE FETCHING DINÁMICO
     useEffect(() => {
         const loadReport = async () => {
             if (!selectedReport) return;
-
             setIsLoading(true);
             setError(null);
             setReportContent(null); 
@@ -35,7 +34,6 @@ function Reports() {
             try {
                 let endpoint = '';
                 
-                // Mapeo de nombres a endpoints
                 if (selectedReport === 'Listado de Clientes') {
                     endpoint = '/reportes/listado-clientes';
                 } 
@@ -45,13 +43,16 @@ function Reports() {
                 else if (selectedReport === 'Gastos por Categoría') {
                     endpoint = '/reportes/gastos-por-categoria';
                 } 
-                else if (selectedReport === 'Reporte de Compras') { // 👈 Reporte nuevo
+                else if (selectedReport === 'Reporte de Compras') {
                     endpoint = '/reportes/reporte-compras';
+                }
+                // 1. ⚠️ AÑADIR EL NUEVO 'ELSE IF'
+                else if (selectedReport === 'Facturas de Compra') {
+                    endpoint = '/reportes/facturas-compra';
                 }
                 else {
                     throw new Error(`El reporte "${selectedReport}" aún no está implementado.`);
                 }
-
                 const response = await api.get(endpoint);
                 setReportContent(response.data); 
 
@@ -63,11 +64,10 @@ function Reports() {
                 setIsLoading(false);
             }
         };
-
         loadReport();
     }, [selectedReport]); 
 
-    // Lógica para cambiar la categoría
+    // ... (handleCategoryChange) ...
     const handleCategoryChange = (categoryId) => {
         const newCategory = STATIC_REPORT_CATEGORIES.find(c => c.id === categoryId);
         setSelectedCategory(categoryId);
@@ -81,28 +81,21 @@ function Reports() {
 
     // --- Renderizado del Contenido del Visualizador ---
     const renderReportContent = () => {
-        if (!selectedReport) {
-            return <p className="initial-message">Seleccione un reporte para su vista previa</p>;
-        }
-        if (isLoading) {
-            return <p className="loading-message">Cargando vista previa de "{selectedReport}"...</p>;
-        }
-        if (error) {
-            return <p className="error-message">{error}</p>;
-        }
+        // ... (if isLoading, if error) ...
+        if (isLoading) { return <p className="loading-message">Cargando...</p>; }
+        if (error) { return <p className="error-message">{error}</p>; }
         
-        // A. Renderizado de Clientes y Proveedores
+        // A. Renderizado Clientes/Proveedores (Tabla 1)
         if (
             (selectedReport === 'Listado de Clientes' || selectedReport === 'Detalle de Proveedores') && 
             Array.isArray(reportContent)
         ) {
-            if (reportContent.length === 0) {
-                 return <p>No se encontraron datos para este reporte.</p>;
-            }
+            if (reportContent.length === 0) return <p>No se encontraron datos.</p>;
             return (
                 <div className="report-table-container">
                     <h3>{selectedReport}</h3>
                     <table className="report-table">
+                        {/* ... (Tu <thead> de Clientes) ... */}
                         <thead>
                             <tr>
                                 <th>Identificación</th>
@@ -130,15 +123,14 @@ function Reports() {
             );
         }
         
-        // B. Renderizado para 'Gastos por Categoría'
+        // B. Renderizado Gastos (Tabla 2)
         if (selectedReport === 'Gastos por Categoría' && Array.isArray(reportContent)) {
-            if (reportContent.length === 0) {
-                return <p>No se encontraron gastos para mostrar.</p>;
-            }
+            if (reportContent.length === 0) return <p>No se encontraron gastos.</p>;
             return (
                 <div className="report-table-container">
                     <h3>{selectedReport}</h3>
                     <table className="report-table">
+                        {/* ... (Tu <thead> de Gastos) ... */}
                         <thead>
                             <tr>
                                 <th>Categoría</th>
@@ -158,15 +150,14 @@ function Reports() {
             );
         }
 
-        // C. Renderizado para 'Reporte de Compras' (El nuevo)
+        // C. Renderizado Reporte de Compras (Tabla 3)
         if (selectedReport === 'Reporte de Compras' && Array.isArray(reportContent)) {
-            if (reportContent.length === 0) {
-                return <p>No se encontraron compras para mostrar.</p>;
-            }
+            if (reportContent.length === 0) return <p>No se encontraron compras.</p>;
             return (
                 <div className="report-table-container">
                     <h3>{selectedReport}</h3>
                     <table className="report-table">
+                        {/* ... (Tu <thead> de Reporte Compras) ... */}
                         <thead>
                             <tr>
                                 <th>ID Compra</th>
@@ -192,9 +183,50 @@ function Reports() {
             );
         }
 
+        // 2. ⚠️ AÑADIR EL NUEVO BLOQUE 'IF'
+        // D. Renderizado Facturas de Compra (Tabla 4)
+        if (selectedReport === 'Facturas de Compra' && Array.isArray(reportContent)) {
+            if (reportContent.length === 0) {
+                return <p>No se encontraron detalles de facturas para mostrar.</p>;
+            }
+            return (
+                <div className="report-table-container">
+                    <h3>{selectedReport}</h3>
+                    <table className="report-table">
+                        <thead>
+                            <tr>
+                                <th>ID Factura</th>
+                                <th>Fecha</th>
+                                <th>Proveedor</th>
+                                <th>Ref. Producto</th>
+                                <th>Producto</th>
+                                <th>Cant.</th>
+                                <th>Vlr. Unit.</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {reportContent.map((item, index) => (
+                                <tr key={index}> {/* Usamos index porque el ID de la factura se repite */}
+                                    <td>{item.purchaseId}</td>
+                                    <td>{item.purchaseDate}</td>
+                                    <td>{item.supplierName}</td>
+                                    <td>{item.productReference}</td>
+                                    <td>{item.productName}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{`$ ${(item.unitPrice || 0).toLocaleString('es-CO')}`}</td>
+                                    <td>{`$ ${(item.subtotal || 0).toLocaleString('es-CO')}`}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
         // --- Fallbacks ---
-        if (reportContent && !Array.isArray(reportContent)) {
-             return <p>El formato de este reporte (JSON) no es reconocido.</p>;
+        if (reportContent) {
+             return <p>El formato de este reporte no es reconocido.</p>;
         }
         return <p className="initial-message">Seleccione un reporte para su vista previa</p>;
     };
@@ -208,7 +240,6 @@ function Reports() {
             <div className="reports-sidebar">
                 
                 <h3 className="sidebar-title">Categorías de Reportes</h3> 
-
                 <div className="report-categories-list">
                     {STATIC_REPORT_CATEGORIES.map(category => (
                         <div 
@@ -220,7 +251,6 @@ function Reports() {
                         </div>
                     ))}
                 </div>
-
                 {activeCategory && (
                     <div className="report-sections-detail">
                         <h4 className="detail-title">{activeCategory.name}</h4>
@@ -236,12 +266,10 @@ function Reports() {
                     </div>
                 )}
             </div>
-
             <div className="report-visualizer">
                 <div className="report-viewer-content">
                     {renderReportContent()}
                 </div>
-
                 <div className="pagination-and-export">
                     <div className="pagination-controls">
                         <button className="page-control">{"<"}</button>
