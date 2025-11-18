@@ -1,32 +1,16 @@
-// import React from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import LoginPage from "./pages/LoginPage";
-// import Dashboard from "./pages/Dashboard";
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<LoginPage />} />
-//         <Route path="/dashboard" element={<Dashboard />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-import Sidebar from "./pages/SideBar";
-import Header from "./pages/Header";
 import HomePage from "./pages/Dashboard";
 import ClientesPage from "./pages/Sales.jsx";
 import ComprasPage from "./pages/Purchase.jsx";
 import ProductsCatalog from "./pages/ProductsCatalog";
-import UsuariosPage from "./pages/EmployeeProfile.jsx";
+import UsuariosPage from "./pages/UserManagement.jsx";
 import ReportesPage from "./pages/Reports.jsx";
+import PurchaseForm from "./pages/PurchaseFrom.jsx";
+import SaleForm from "./pages/SaleForm.jsx";
 import ProfilePage from "./pages/Profile.jsx";
+import Notifications from "./pages/Notification.jsx";
+import CompanyData from "./pages/CompanyData.jsx";
 import "./App.jsx";
 
 function App() {
@@ -47,7 +31,11 @@ function App() {
                     <Route path="/productos" element={<ProductsCatalog />} />
                     <Route path="/usuarios" element={<UsuariosPage />} />
                     <Route path="/reportes" element={<ReportesPage />} />
+                    <Route path="/register-purchase" element={<PurchaseForm />} />
+                    <Route path="/register-sale" element={<SaleForm />} />
                     <Route path="/perfil" element={<ProfilePage />} />
+                    <Route path="/notificaciones" element={<Notifications />} />
+                    <Route path="/datos-empresa" element={<CompanyData />} />
                   </Routes>
                 </div>
           }

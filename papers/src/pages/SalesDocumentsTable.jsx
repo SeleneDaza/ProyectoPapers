@@ -34,18 +34,24 @@ function SalesDocumentsTable({ sales }) {
           </tr>
         </thead>
         <tbody>
-          {/* Mapeamos los datos recibidos por prop para crear las filas */}
+          {/* Usamos 'invoiceNumber' para el key (generado en el aplanador) */}
           {sales.map((sale, index) => (
-            <tr key={sale.invoiceNumber || index}>
+            // Key compuesto para asegurar unicidad (Factura ID + Index de línea)
+            <tr key={`${sale.invoiceNumber}-${index}`}> 
+              {/* --- CAMPOS CORREGIDOS (Coinciden con el aplanador) --- */}
+              
               <td>{sale.invoiceNumber}</td>
-              <td>{sale.client}</td>
-              <td>{sale.product}</td>
-              <td>{formatCOP(sale.unitPrice)}</td>
+              <td>{sale.client}</td>       
+              <td>{sale.product}</td>        {/* Ahora muestra el ID del Producto */}
+              <td>{formatCOP(sale.unitPrice)}</td> 
               <td>{sale.quantity}</td>
               <td>{formatCOP(sale.subtotalValue)}</td>
-              <td>{formatCOP(sale.taxValue)}</td>
+              <td>{formatCOP(sale.taxValue)}</td>    
               <td>{formatCOP(sale.discountValue)}</td>
-              <td>{formatCOP(sale.totalValue)}</td>
+              
+              {/* El total solo debe mostrarse en la primera línea si hay varias, 
+                  pero lo dejamos así por ahora para cumplir el diseño plano. */}
+              <td>{formatCOP(sale.totalValue)}</td> 
             </tr>
           ))}
         </tbody>

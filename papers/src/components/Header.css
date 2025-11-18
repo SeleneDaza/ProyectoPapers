@@ -1,4 +1,3 @@
-/* 1. Contenedor Principal (Header) */
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,11 +5,11 @@
   padding: 15px 20px 15px 0;
 }
 
-/* 2. Barra de Búsqueda */
 .search-bar {
   flex-grow: 1; 
   max-width: 400px; 
   margin-right: 20px;
+  background-color: #ffff;
 }
 
 .search-bar input {
@@ -20,16 +19,16 @@
   border-radius: 5px;
   font-size: 16px;
   width: 100%; 
+  background-color: #ffffff !important; 
+  color: #000 !important;
 }
 
-/* 3. Contenedor de Botones (Derecha) */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 5px; /* 🔥 REDUCIDO: Espacio más pequeño entre los botones (de 10px a 5px) 🔥 */
+  gap: 5px; 
 }
 
-/* 4. Botón de Ayuda (Principal Verde) */
 .help-btn {
   display: flex;
   align-items: center;
@@ -45,27 +44,25 @@
   gap: 5px;
 }
 
-/* 5. Estilo de los Botones Pequeños y Grises (Campana y Configuración) */
 .extra-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* 🔥 REDUCIDO: Tamaño más pequeño (de 35px a 30px) 🔥 */
-  height: 40px; /* 🔥 REDUCIDO: Tamaño más pequeño (de 35px a 30px) 🔥 */
+  width: 40px; 
+  height: 40px;
   border-radius: 50%;
   border: none;
   background-color: transparent; 
   color: #6c757d; 
   cursor: pointer;
-  font-size: 16px; /* 🔥 REDUCIDO: Tamaño del ícono más pequeño (de 18px a 16px) 🔥 */
+  font-size: 16px;
 }
 
-/* 6. Botón de Perfil (Un poco más grande y con fondo gris claro) */
 .perfil-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px; /* Ligeramente más grande que los extra-button */
+  width: 50px; 
   height: 50px;
   border-radius: 50%;
   border: none;
@@ -82,4 +79,82 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ===========================
+   📌 Tablets — max-width 1024px
+   =========================== */
+@media (max-width: 1024px) {
+  .search-bar {
+    max-width: 300px;
+  }
+
+  .help-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+/* ===========================
+   📌 Pantallas medianas — max-width 768px
+   =========================== */
+@media (max-width: 768px) {
+
+  .header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .search-bar {
+    order: 3;
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .header-right {
+    order: 2;
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .help-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .extra-button,
+  .perfil-button {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+}
+
+/* ===========================
+   📌 Móviles pequeños — max-width 480px
+   =========================== */
+@media (max-width: 480px) {
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .header-right {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search-bar input {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .help-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }

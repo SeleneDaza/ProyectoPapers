@@ -1,39 +1,31 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+// En /hooks/useProducts.js
+import { useState, useEffect, useCallback } from 'react'; // Importa useCallback
+import api from './api.js';
 
-// La URL de tu API de Java
-const API_URL = 'http://localhost:8080/api/productos';
+const API_URL = '/productos';
 
-/**
- * Este es un Hook personalizado que maneja la lógica
- * para obtener los productos de la API.
- */
 export function useProducts() {
-  // Estado para guardar la lista de productos
   const [products, setProducts] = useState([]);
-  
-  // Estado para saber si estamos "cargando"
   const [loading, setLoading] = useState(true);
 
-  // useEffect se ejecuta una sola vez al cargar el componente
+  // 1. Usamos useCallback para "memorizar" la función de carga
+  const fetchProducts = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await api.get(API_URL);
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error al cargar los productos:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []); // El array vacío significa que esta función nunca cambia
+
+  // 2. useEffect la llama la primera vez
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        // 1. Llama a tu API de Java
-        const response = await axios.get(API_URL);
-        // 2. Guarda los datos en el estado
-        setProducts(response.data);
-      } catch (error) {
-        console.error("Error al cargar los productos:", error);
-      } finally {
-        // 3. Termina el estado de "cargando"
-        setLoading(false);
-      }
-    };
-
     fetchProducts();
-  }, []); // El [] asegura que solo se ejecute una vez
+  }, [fetchProducts]);
 
-  // Devuelve los productos y el estado de carga
-  return { products, loading };
+  // 3. Devuelve la función para que otros componentes puedan llamarla
+  return { products, loading, refreshProducts: fetchProducts };
 }

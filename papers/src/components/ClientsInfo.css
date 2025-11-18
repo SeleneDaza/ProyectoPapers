@@ -58,3 +58,73 @@
   margin: 5px 0;
   font-size: 14px;
 }
+
+/* 📌 Tablet (pantallas medianas) */
+@media (max-width: 992px) {
+
+  .client-header {
+    gap: 10px;
+  }
+
+  .client-avatar {
+    font-size: 50px;
+  }
+
+  .client-name {
+    font-size: 18px;
+  }
+
+  .client-sections {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* 📌 Móvil grande */
+@media (max-width: 768px) {
+
+  .client-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .client-avatar {
+    font-size: 45px;
+  }
+
+  .client-name {
+    font-size: 17px;
+  }
+
+  .client-container {
+    padding: 15px;
+  }
+
+  .client-sections {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .client-box {
+    padding: 12px;
+  }
+}
+
+/* 📌 Móvil pequeño */
+@media (max-width: 480px) {
+
+  .client-avatar {
+    font-size: 40px;
+  }
+
+  .client-name {
+    font-size: 16px;
+  }
+
+  .client-box h4 {
+    font-size: 15px;
+  }
+
+  .client-box p {
+    font-size: 13px;
+  }
+}

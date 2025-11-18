@@ -66,3 +66,70 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* ==========================================
+   📌 Tablets — max-width 1024px
+   ========================================== */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.8em;
+  }
+
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.95em;
+  }
+
+  body {
+    padding: 0 15px;
+  }
+}
+
+/* ==========================================
+   📌 Pantallas medianas — max-width 768px
+   ========================================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.4em;
+  }
+
+  button {
+    padding: 0.5em 0.9em;
+    font-size: 0.9em;
+  }
+
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  :root {
+    line-height: 1.4;
+  }
+}
+
+/* ==========================================
+   📌 Móviles pequeños — max-width 480px
+   ========================================== */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.9em;
+    text-align: center;
+  }
+
+  a {
+    font-size: 0.95em;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.7em;
+    font-size: 0.9em;
+  }
+
+  body {
+    padding: 15px;
+    place-items: stretch;
+  }
+}

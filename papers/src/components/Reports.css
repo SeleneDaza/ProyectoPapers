@@ -1,22 +1,19 @@
-/* ReportsView.css */
-
 :root {
-    --bg-light-blue: #f0f6ff; /* Fondo general de la sección de reportes */
-    --text-blue: #4c86f7; /* Color principal de los enlaces y encabezados */
-    --border-color: #e0e7f7; /* Borde suave */
-    --sidebar-bg: #e0e6f7; /* Fondo de la barra lateral (ligeramente más oscuro) */
+    --bg-light-blue: #f0f6ff; 
+    --text-blue: #4c86f7; 
+    --border-color: #e0e7f7; 
+    --sidebar-bg: #e0e6f7; 
     --hover-bg: #cce0ff;
 }
 
 .reports-page-layout {
     display: flex;
-    min-height: calc(100vh - 80px); /* Ajusta a la altura de la vista si es necesario */
+    min-height: calc(100vh - 80px); 
     background-color: var(--bg-light-blue);
     border-radius: 8px;
-    overflow: hidden; /* Para que las esquinas se vean bien */
+    overflow: hidden; 
 }
 
-/* --- Columna Izquierda: Navegación de Reportes --- */
 .reports-sidebar {
     width: 300px;
     background-color: var(--sidebar-bg);
@@ -58,7 +55,6 @@
     font-size: 0.8rem;
 }
 
-/* --- Secciones detalladas (si decides mostrarlas debajo) --- */
 .report-sections-detail {
     padding: 10px 20px;
     border-top: 1px solid var(--border-color);
@@ -82,15 +78,12 @@
     font-weight: bold;
     color: var(--text-blue);
 }
-
-
-/* --- Columna Derecha: Visualizador de Reporte --- */
 .report-visualizer {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: white; /* El área de visualización es blanca */
+    background-color: white; 
 }
 
 .report-viewer-content {
@@ -105,7 +98,7 @@
 
 .initial-message {
     font-size: 1.2rem;
-    color: #a0b3d6; /* Gris azulado suave */
+    color: #a0b3d6; 
 }
 
 .report-title-preview {
@@ -113,10 +106,9 @@
     font-size: 1.5rem;
 }
 
-/* --- Controles de Paginas/PDF --- */
 .pagination-and-export {
     display: flex;
-    justify-content: flex-end; /* Alinea los controles a la derecha */
+    justify-content: flex-end; 
     align-items: center;
     gap: 0px;
     padding: 5px 0;
@@ -155,4 +147,131 @@
 }
 .export-pdf-btn:hover {
     color: var(--text-blue);
+}
+
+/* ----------------------------- */
+/* TABLET - Max width 1024px     */
+/* ----------------------------- */
+@media (max-width: 1024px) {
+
+    .reports-sidebar {
+        width: 240px;
+    }
+
+    .report-category-item {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    .report-sections-detail {
+        padding: 8px 16px;
+    }
+
+    .report-visualizer {
+        padding: 15px;
+    }
+
+    .report-viewer-content {
+        margin-bottom: 10px;
+    }
+
+    .pagination-and-export {
+        justify-content: space-between;
+    }
+}
+
+/* ----------------------------- */
+/* MOBILE LARGE - Max width 768px */
+/* ----------------------------- */
+
+
+@media (max-width: 768px) {
+
+    .reports-page-layout {
+        flex-direction: column;
+    }
+
+    .reports-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px 0;
+    }
+
+    .sidebar-title {
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .report-category-item {
+        justify-content: center;
+        padding: 10px 0;
+    }
+
+    .report-sections-detail {
+        padding: 10px 0;
+        border-top: none;
+    }
+
+    .report-section-link {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .report-visualizer {
+        padding: 15px;
+    }
+
+    .report-title-preview {
+        text-align: center;
+    }
+
+    .pagination-and-export {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+
+/* ----------------------------- */
+/* MOBILE SMALL - Max width 480px */
+/* ----------------------------- */
+
+
+@media (max-width: 480px) {
+
+    .sidebar-title {
+        font-size: 1rem;
+    }
+
+    .report-category-item {
+        font-size: 0.9rem;
+        padding: 8px 0;
+    }
+
+    .report-section-link {
+        font-size: 0.85rem;
+    }
+
+    .report-title-preview {
+        font-size: 1.2rem;
+    }
+
+    .initial-message {
+        font-size: 1rem;
+    }
+
+    .page-control {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .page-number {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+
+    .export-pdf-btn {
+        font-size: 1.2rem;
+    }
 }

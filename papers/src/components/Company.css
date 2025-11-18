@@ -1,0 +1,209 @@
+.company-container {
+  padding: 15px;
+  background: #f1f6ff;
+}
+
+.company-header h2 {
+  font-size: 25px;
+  font-weight: 600;
+  color: #183153;
+}
+
+.company-info-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dde7ff;
+}
+
+.company-title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.company-logo img {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+}
+
+.company-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #183153;
+  flex-grow: 1;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e6efff;
+  border: 1px solid #c3d5ff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #183153;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  background: #dbe8ff;
+}
+
+.company-info-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #183153;
+  margin-bottom: 10px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  color: #3b4a61;
+  margin-bottom: 3px;
+}
+
+.field-value {
+  font-size: 15px;
+  color: #0f1b28;
+  border-bottom: 1px solid #cfd9ef;
+  padding-bottom: 4px;
+  width: 100%;
+}
+
+.link {
+  color: #0d6efd;
+  cursor: pointer;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #183153;
+}
+
+/* 📌 Tablet (≤ 992px) */
+@media (max-width: 992px) {
+
+  .company-info-card {
+    padding: 20px;
+  }
+
+  .company-title-row {
+    gap: 12px;
+  }
+
+  .company-logo img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .company-name {
+    font-size: 20px;
+  }
+
+  .edit-btn {
+    padding: 7px 12px;
+    font-size: 14px;
+  }
+
+  .company-info-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .section-title {
+    font-size: 17px;
+  }
+
+  .field-value {
+    font-size: 14px;
+  }
+}
+
+/* 📌 Móvil grande (≤ 768px) */
+@media (max-width: 768px) {
+
+  .company-container {
+    padding: 10px;
+  }
+
+  .company-header h2 {
+    font-size: 22px;
+  }
+
+  .company-info-card {
+    padding: 18px;
+  }
+
+  .company-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .company-name {
+    font-size: 19px;
+  }
+
+  .edit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .company-info-grid {
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+}
+
+/* 📌 Móvil pequeño (≤ 480px) */
+@media (max-width: 480px) {
+
+  .company-header h2 {
+    font-size: 20px;
+  }
+
+  .company-logo img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .company-name {
+    font-size: 17px;
+  }
+
+  .edit-btn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .field label {
+    font-size: 13px;
+  }
+
+  .field-value {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,190 @@
+.notif-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.notif-box {
+  width: 90%;
+  max-width: 1000px;
+  background: #e4ebf7;
+  padding: 35px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.notif-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.notif-top-btns {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.notif-small-btn {
+  width: 55px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #7da3d7;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.reload {
+  font-size: 18px;
+}
+
+.notif-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notif-row {
+  display: grid;
+  grid-template-columns: 50px auto 50px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #b8c6dc;
+}
+
+.notif-check {
+  width: 18px;
+  height: 18px;
+}
+
+.notif-star {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.notif-star svg {
+  color: #f4c022;
+}
+
+.notif-accept {
+  margin-top: 30px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 1px solid #4a72a7;
+  background: white;
+  cursor: pointer;
+}
+
+.no-notif {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
+}
+/* ==========================================
+   📌 Tablets — max-width 900px
+   ========================================== */
+@media (max-width: 900px) {
+  .notif-box {
+    padding: 25px;
+  }
+
+  .notif-title {
+    font-size: 1.7rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 40px auto 40px;
+  }
+
+  .notif-small-btn {
+    width: 50px;
+    height: 28px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles grandes — max-width 600px
+   ========================================== */
+@media (max-width: 600px) {
+  .notif-box {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .notif-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .notif-top-btns {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .notif-row {
+    grid-template-columns: 35px auto 35px;
+    padding: 10px 0;
+  }
+
+  .notif-check {
+    width: 16px;
+    height: 16px;
+  }
+
+  .notif-star {
+    font-size: 20px;
+  }
+
+  .notif-accept {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
+
+/* ==========================================
+   📌 Móviles pequeños — max-width 420px
+   ========================================== */
+@media (max-width: 420px) {
+  .notif-box {
+    padding: 15px;
+  }
+
+  .notif-title {
+    font-size: 1.3rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 30px auto 30px;
+  }
+
+  .notif-small-btn {
+    width: 45px;
+    height: 26px;
+    border-radius: 8px;
+  }
+
+  .notif-accept {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================
+   📌 Móviles muy pequeños — max-width 340px
+   ========================================== */
+@media (max-width: 340px) {
+  .notif-title {
+    font-size: 1.2rem;
+  }
+
+  .notif-row {
+    grid-template-columns: 25px auto 25px;
+  }
+
+  .notif-star {
+    font-size: 18px;
+  }
+}

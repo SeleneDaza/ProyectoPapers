@@ -4,18 +4,20 @@ import Header from "./Header.jsx";
 import ClientInfo from "./ClientsInfo.jsx";
 import SalesInfo from "./SalesInfo.jsx";
 import "../components/Clients.css";
-import { fetchClientData } from "../hooks/clientsLogic.js";
+import { useListUsers } from "../hooks/useListUsers.js";
 import {fetchSalesData} from "../hooks/salesData.js";
+import { useListSales } from "../hooks/useListSales.js";
+import { flattenSalesData } from "../utils/salesUtils.js";
 import Layout from "./Layout.jsx";
 
 function Sales() {
   const [activeTab, setActiveTab] = useState("clientes");
-  const [client, setClient] = useState(null);
-  const [sales, setSales] = useState(null);
+  const { users: clients, loading, error } = useListUsers("CLIENTE");
+  const { sales, loading: salesLoading, error: salesError } = useListSales();
+
+  const flattenedSales = sales.length > 0 ? flattenSalesData(sales) : [];
 
   useEffect(() => {
-    fetchClientData().then((data) => setClient(data));
-    fetchSalesData().then((data)=> setSales(data))
   }, []);
 
   return (
@@ -41,10 +43,27 @@ function Sales() {
           {activeTab === "clientes" && (
             <>
               <h2 className="page-title">Información del cliente</h2>
-              {client ? (
-                <ClientInfo client={client} />
-              ) : (
+              
+              {/* Muestra "Cargando..." mientras el hook trabaja */}
+              {loading && (
                 <p className="loading">Cargando información del cliente...</p>
+              )}
+              
+              {/* Muestra un error si el hook falla */}
+              {error && (
+                <p className="loading">Error al cargar clientes.</p>
+              )}
+              
+              {/* Si NO está cargando, NO hay error, y SÍ hay clientes... */}
+              {!loading && !error && clients && clients.length > 0 && (
+                // ...muestra el PRIMER cliente de la lista
+                // (Ahora usamos 'clients' (plural) que SÍ existe)
+                <ClientInfo client={clients[0]} />
+              )}
+
+              {/* Si no hay clientes (lista vacía) */}
+               {!loading && !error && clients && clients.length === 0 && (
+                <p>No se encontraron clientes.</p>
               )}
             </>
           )}
@@ -52,10 +71,13 @@ function Sales() {
           {activeTab === "documentos" && (
             <>
               <h2 className="page-title">Filtro de busqueda</h2>
-              {sales ? (
-                <SalesInfo sales={sales} />
+              {/* --- CAMBIO: Usamos las nuevas variables --- */}
+              {salesLoading ? (
+                <p className="loading">Cargando información de las ventas...</p>
+              ) : salesError ? (
+                <p className="loading">Error al cargar la información de ventas.</p>
               ) : (
-                <p className="loading">Cargando información de las venta...</p>
+                <SalesInfo sales={flattenedSales} /> 
               )}
             </>
           )}
