@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout.jsx'; // Asegúrate de que la ruta a Layout sea correcta
 import api from '../hooks/api.js'; // Asegúrate de que la ruta a tu instancia de Axios sea correcta
+import '../components/SalesForm.css';
 import { useNavigate } from 'react-router-dom';
 
 function SaleForm() {

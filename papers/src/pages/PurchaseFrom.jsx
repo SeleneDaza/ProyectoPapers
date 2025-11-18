@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from './Layout.jsx';
 import api from '../hooks/api.js'; 
+import '../components/PurchaseForm.css';
 import { useNavigate } from 'react-router-dom';
 
 function PurchaseForm() {

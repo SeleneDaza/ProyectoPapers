@@ -93,21 +93,16 @@ function ProductCatalog() {
     }
   };
 
-  // --- RENDERIZADO DEL COMPONENTE ---
+
   return (
     <Layout>
     <div className="product-catalog-view">
-      
-      {/* --- 1. Barra de Herramientas --- */}
       <div className="toolbar-container-inline">
         
-        {/* Input de Búsqueda (sin funcionalidad aún) */}
-        <div className="search-input-group-inline">
+        <div className="search-input-group">
           <input type="text" placeholder="Ingrese el nombre del producto" className="search-input-compact"/>
           <FaSearch className="search-icon-compact" />
         </div>
-
-        {/* Botones de Acción */}
         <div className="action-buttons-group-inline">
           <button className="toolbar-btn inline-btn add-btn-inline" onClick={handleAdd}>
             <FaPlus /> Añadir

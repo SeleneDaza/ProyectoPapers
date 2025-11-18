@@ -25,7 +25,7 @@
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 4px;
-    padding: 8px 12px;
+    padding: 1px 6px;
     flex-grow: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     max-width: 600px;

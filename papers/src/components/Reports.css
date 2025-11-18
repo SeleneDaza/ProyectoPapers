@@ -108,8 +108,7 @@
 
 .pagination-and-export {
     display: flex;
-    justify-content: flex-end; 
-    align-items: center;
+    justify-content: space-between;
     gap: 0px;
     padding: 5px 0;
 }
@@ -144,6 +143,7 @@
     color: #666;
     cursor: pointer;
     padding: 5px;
+    width: 20%;
 }
 .export-pdf-btn:hover {
     color: var(--text-blue);
@@ -262,7 +262,7 @@
     }
 
     .page-control {
-        padding: 6px 10px;
+        padding: 6px 20px;
         font-size: 0.9rem;
     }
 

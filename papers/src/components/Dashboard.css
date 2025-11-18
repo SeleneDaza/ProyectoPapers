@@ -12,6 +12,21 @@
   gap: 2rem;
 }
 
+.gauge-div {
+  display: flex;
+  flex-direction: row;  
+  justify-content: center;
+  align-items: baseline;
+  gap: 20px;         
+}
+.gauge-div h1 {
+  font-size: 20px;
+  color: #333;
+}
+.gauge-div .invisible {
+  color: transparent;
+}
+
 .gauge {
   width: 300px;
   height: 150px;
@@ -47,7 +62,7 @@
   border: 1px solid #ccc;
   border-radius: 15px;
   width: 200px; 
-  height: 100px; 
+  height: 90px; 
   display: flex;
   justify-content: center;
   align-items: center;
