@@ -1,0 +1,44 @@
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Para responsividad en móviles */
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.user-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.user-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+/* Estilo para la fila seleccionada */
+.user-table tbody tr.selected {
+  background-color: #e6f7ff; /* Un azul claro */
+  border-left: 3px solid #007bff;
+}
+
+.no-users-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+  color: #6c757d;
+}

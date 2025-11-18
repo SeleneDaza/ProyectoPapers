@@ -1,30 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import api from './api.js';
 
+const API_URL = '/api/usuarios'; // <-- Llama a la ruta principal
 
-const API_URL = '/usuarios'; 
-
-/**
- * Hook para listar Usuarios.
- * @param {string | null} roleFilter
- * (ej. "CLIENTE", "PROVEEDOR")
- */
 export function useListUsers(roleFilter = null) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchUsers();
-  }, [roleFilter]);
-
-  const fetchUsers = async () => {
+  // Usamos useCallback para memorizar la función
+  const fetchUsers = useCallback(async () => {
     setLoading(true);
+    setError(null);
     try {
+      // 1. Llama a la API (trae TODOS los usuarios)
       const response = await api.get(API_URL);
       
       let data = response.data;
 
+      // 2. Filtra en React (esto es lo que funcionaba)
       if (roleFilter) {
         data = data.filter(t => t.roles.includes(roleFilter));
       }
@@ -36,7 +30,11 @@ export function useListUsers(roleFilter = null) {
     } finally {
       setLoading(false);
     }
-  };
+  }, [roleFilter]); // Se re-ejecuta si el filtro de rol cambia
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
 
   return { users, loading, error, refreshUsers: fetchUsers };
 }

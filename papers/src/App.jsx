@@ -4,7 +4,7 @@ import HomePage from "./pages/Dashboard";
 import ClientesPage from "./pages/Sales.jsx";
 import ComprasPage from "./pages/Purchase.jsx";
 import ProductsCatalog from "./pages/ProductsCatalog";
-import UsuariosPage from "./pages/EmployeeProfile.jsx";
+import UsuariosPage from "./pages/UserManagement.jsx";
 import ReportesPage from "./pages/Reports.jsx";
 import PurchaseForm from "./pages/PurchaseFrom.jsx";
 import SaleForm from "./pages/SaleForm.jsx";

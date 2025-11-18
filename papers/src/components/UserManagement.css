@@ -1,0 +1,44 @@
+/* UserManagement.css */
+
+/* Contenedor principal de la página de usuarios */
+.user-management-page {
+  padding: 20px;
+  background-color: #f4f7f6; /* Un fondo ligero para la página */
+  min-height: 100vh;
+}
+
+/* Contenedor de las pestañas (reutilizado de tu EmployeeProfile) */
+.tabs-container-profile {
+  display: flex;
+  border-bottom: 2px solid #dee2e6;
+  margin-bottom: 20px;
+}
+
+.tab-profile {
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6c757d;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px; /* Alinea con el borde inferior */
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-profile:hover {
+  color: #343a40;
+}
+
+/* Pestaña activa */
+.tab-profile.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+/* Contenedor para la tabla */
+.user-list-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden; /* Para que la tabla respete el borde redondeado */
+}   
