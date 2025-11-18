@@ -15,7 +15,7 @@ import api from '../hooks/api.js';
 import '../components/ProductsCatalog.css';
 
 // --- CONSTANTES ---
-const API_URL = '/api/productos'; // <-- CORREGIDO (basado en tu backend)
+const API_URL = '/productos'; // <-- CORREGIDO (basado en tu backend)
 
 
 function ProductCatalog() {

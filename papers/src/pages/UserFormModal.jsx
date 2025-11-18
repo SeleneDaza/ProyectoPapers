@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import '../components/UserFormModal.css';
+
 // Estado inicial con nombres de campo de React (más fáciles de manejar)
 const reactInitialState = {
   identificacion: '',
@@ -68,41 +70,52 @@ function UserFormModal({ user, onClose, onSave, defaultRole }) {
     setFormData(prev => ({ ...prev, [name]: val }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // --- CONVERSIÓN CRÍTICA ---
-    // Antes de guardar, convertimos el estado de React al DTO de Java
-    
-    // 1. Construir el Set<String> de roles
-    const rolesDTO = new Set();
-    if (formData.rolCliente) rolesDTO.add('CLIENTE');
-    if (formData.rolProveedor) rolesDTO.add('PROVEEDOR');
-    if (formData.rolEmpleado) rolesDTO.add('EMPLEADO');
-    // Tu backend no permite ADMIN, pero si lo permitiera, iría aquí
+  // En UserFormModal.jsx, dentro de handleSubmit:
 
-    // 2. Construir el DTO final para enviar
-    const userDTO_to_save = {
-      identificacion: formData.identificacion,
-      tipoPersona: formData.tipoPersona,
-      tipoIdentificacion: formData.tipoIdentificacion,
-      nombres: formData.nombres,
-      apellidos: formData.apellidos,
-      ciudad: formData.ciudad,
-      direccion: formData.direccion,
-      nombresContacto: formData.nombresContacto,
-      apellidosContacto: formData.apellidosContacto,
-      email: formData.email,
-      telefono: formData.telefono,
-      username: formData.username,
-      password: formData.password, // Enviar el password (si está vacío, el backend debe manejarlo)
-      active: formData.active,
-      roles: Array.from(rolesDTO) // Convertir Set a Array para JSON
-    };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  
+  const rolesDTO = new Set();
+  if (formData.rolCliente) rolesDTO.add('CLIENTE');
+  if (formData.rolProveedor) rolesDTO.add('PROVEEDOR');
+  if (formData.rolEmpleado) rolesDTO.add('EMPLEADO'); // Asumo que "EMPLEADO" puede tener username/password
 
-    // 3. Llamar a la función onSave del padre con el DTO corregido
-    onSave(userDTO_to_save);
+  const userDTO_to_save = {
+    identificacion: formData.identificacion,
+    tipoPersona: formData.tipoPersona,
+    tipoIdentificacion: formData.tipoIdentificacion,
+    nombres: formData.nombres,
+    apellidos: formData.apellidos,
+    ciudad: formData.ciudad,
+    direccion: formData.direccion,
+    // Siempre enviar nombresContacto y apellidosContacto si es proveedor
+    nombresContacto: formData.nombresContacto, 
+    apellidosContacto: formData.apellidosContacto, 
+    email: formData.email,
+    telefono: formData.telefono,
+    active: formData.active,
+    roles: Array.from(rolesDTO)
   };
+
+  // Lógica para username/password:
+  // Solo incluye username y password si tiene el rol de Empleado (o Administrador si lo tuvieras)
+  if (formData.rolEmpleado) { // Si tienes rol Administrador, añádelo aquí también: || formData.rolAdministrador
+      userDTO_to_save.username = formData.username;
+      userDTO_to_save.password = formData.password;
+  } else {
+      // Asegúrate de que no se envían si no tienen rol de login
+      delete userDTO_to_save.username;
+      delete userDTO_to_save.password;
+  }
+
+  // Si no es proveedor, no enviar campos de contacto (o el backend los ignora/nullea)
+  if (!formData.rolProveedor) {
+      delete userDTO_to_save.nombresContacto;
+      delete userDTO_to_save.apellidosContacto;
+  }
+
+  onSave(userDTO_to_save);
+};
 
   // --- RENDERIZADO (Usando los 'name' del estado de React) ---
   return (
@@ -185,9 +198,15 @@ function UserFormModal({ user, onClose, onSave, defaultRole }) {
               <input type="text" name="username" value={formData.username} onChange={handleChange} />
             </div>
             <div className="form-group">
-              <label>Password</label>
-              <input type="password" name="password" value={formData.password} placeholder={isEditing ? 'Dejar vacío para no cambiar' : ''} />
-            </div>
+  <label>Password</label>
+  <input
+    type="password"
+    name="password"
+    value={formData.password}
+    onChange={handleChange} // <-- ¡AÑADIR ESTO!
+    placeholder={isEditing ? 'Dejar vacío para no cambiar' : ''}
+  />
+</div>
           </div>
 
           <h4>Rol y Estado</h4>
