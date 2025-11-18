@@ -182,8 +182,8 @@ const handleSubmit = (e) => {
           </div>
           <div className="form-row">
             <div className="form-group">
-              <label>Email</label>
-              <input type="email" name="email *" value={formData.email} onChange={handleChange} />
+              <label>Email *</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} />
             </div>
             <div className="form-group">
               <label>Teléfono</label>
