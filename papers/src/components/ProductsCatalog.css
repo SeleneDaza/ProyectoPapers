@@ -16,19 +16,21 @@ body {
     padding: 15px 0; 
 }
 
-.search-input-group-inline {
+.search-input-group {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border: 1px solid #ccc;
     background-color: white;
     border-radius: 4px;
-    padding: 8px 12px;
+    padding: 1px 6px;
     flex-grow: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     max-width: 600px;
 }
 
 .search-input-compact {
+  margin: 3%;
     border: none;
     outline: none;
     padding: 5px 0;
@@ -40,7 +42,6 @@ body {
     color: #666;
     margin-left: 10px;
     font-size: 1.1rem;
-    order: -1;
 }
 
 .action-buttons-group-inline {
