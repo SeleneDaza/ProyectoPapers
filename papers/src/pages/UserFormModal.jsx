@@ -183,7 +183,7 @@ const handleSubmit = (e) => {
           <div className="form-row">
             <div className="form-group">
               <label>Email</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} />
+              <input type="email" name="email *" value={formData.email} onChange={handleChange} />
             </div>
             <div className="form-group">
               <label>Teléfono</label>
@@ -194,11 +194,11 @@ const handleSubmit = (e) => {
           <h4>Credenciales (Para Empleados/Admin)</h4>
           <div className="form-row">
             <div className="form-group">
-              <label>Username</label>
+              <label>Username *</label>
               <input type="text" name="username" value={formData.username} onChange={handleChange} />
             </div>
             <div className="form-group">
-  <label>Password</label>
+  <label>Password *</label>
   <input
     type="password"
     name="password"
